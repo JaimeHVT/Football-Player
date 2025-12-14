@@ -760,6 +760,8 @@ function tocarMusica() {
 
     <div id="D85" class="decisao" style="display: block;">
         <div class="close"></div>
+        <h2>SELECT YOUR LANGUAGE</h2>
+        <div class="close"></div>
         <img class="bandeiraIdioma height="200px" width="300px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" onclick="mudarIdioma('pt-Br'); document.getElementById('D86').style.display='flex'; document.getElementById('D85').style.display='none'"><br>
         <img class="bandeiraIdioma height="200px" width="300px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/1200px-Flag_of_Catalonia.svg.png" onclick="mudarIdioma('cat'); document.getElementById('D86').style.display='flex'; document.getElementById('D85').style.display='none'">
         <div class="close"></div>
@@ -2947,7 +2949,7 @@ function tocarMusica() {
                     document.getElementById("H25").textContent = nome + " comença la seva carrera al " + equipe + "!";
                     document.getElementById("p1").textContent = "El jove jugador de 17 anys, " + nome + ", acaba de pujar a l'equip principal del " + equipe + " i sembla tenir un futur brillant. Ell va ser el " + posicao + " més destacat del club a l'equip sub-16.";
                 }
-                document.getElementById("img1").src = "https://stampagramas.com.br/wp-content/uploads/2021/02/2021-02-12-tamanhos-oficiais-de-campo-society-1280x720.jpg";
+                document.getElementById("img1").src="img/chegadaNovoJogador.jpg";
             } else if (noticiaPredefinida === 1){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " é visto dando voltas de kart";
@@ -2956,14 +2958,14 @@ function tocarMusica() {
                     document.getElementById("H25").textContent = nome + " és vist donant voltes de kart";
                     document.getElementById("p1").textContent = "Ahir a la tarda, " + nome + " va ser vist donant voltes de kart a un circuit. Això pot ser considerat com a esport de risc per alguns equips, i en els contractes dels jugadors és prohibit practicar esports de risc. L'entrenador del " + equipe + " ha dit en una entrevista: '" +nome + " és un jugador de futbol responsable i que sap què fa. Si ell dóna voltes amb un kart és perquè sap conduir i sap que això no afectará el seu rendiment a l'equip.' Les paraules de l'entrenador sorpreenen algunes persones al món del futbol. Però la pregunta és: " + nome + " realment sap què fa? Aquesta actitud no tindrá conseqüències dolentes al futur?";
                 }
-                document.getElementById("img1").src = "https://www.rotax-racing.com/assets/images/News/2023/Gellerasen-Track-Sweden/Testing-the-track-in-the-Rotax-E20-E-Kart_low.jpg";
+                document.getElementById("img1").src="img/Kart.jpg";
             } else if (noticiaPredefinida === 2){
                 document.getElementById("H25").textContent = equipe + " contrata " + nome;
                 document.getElementById("p1").textContent = nome + " foi contratado pelo " + equipe + ". O jogador de " + idade + " anos, que teve um grande início de carreira no futebol inglês, recebeu uma proposta da equipe após terminar seu contrato com a equipe anterior. A torcida do " + equipe + " está muito feliz com a chegada do novo jogador. Em uma entrevista, um torcedor falou: '"  +nome + "é um jogador de alto nível que com certeza poderá ajudar o clube a conseguir bons resultados. Tenho muita confiança nele.' Após essa declaração do torcedor, só o tempo dirá se " + nome + " terá um bom desempenho no " + equipe + ".";
                 if (equipe === "Aston Villa"){
-                    document.getElementById("img1").src = "https://i.guim.co.uk/img/media/4b89d8784cbd2bc089c1229cf5285ba276c177b2/0_339_5095_3057/master/5095.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=52499815360ac2ee97823cf9eac8a1f8";
+                    document.getElementById("img1").src="img/chegadaNovoJogador.jpg";
                 } else if (equipe === "Newcastle United"){
-                    document.getElementById("img1").src = "https://images.ctfassets.net/9ec6988xevcz/5YKOmYhi4RtfmVtiVBA8FS/667d83850b20fef4edb90fe1d384a694/St._James-_Park_Header.jpg";
+                    document.getElementById("img1").src="img/chegadaNovoJogador.jpg";
                 }
             } else if (noticiaPredefinida === 3){
                 if (idioma === "pt-Br"){
@@ -2973,7 +2975,7 @@ function tocarMusica() {
                     document.getElementById("H25").textContent = nome + " fa un directe de Clash a YouTube";
                     document.getElementById("p1").textContent = nome + " ha fet un directe jugant Clash Royale, un joc de mòbil molt popular. Ell va poder interagir amb els fans al directe, però sembla que l'entrenador del " + equipe + " no està content amb l'actitud del jugador. En una entrevista, l'entrenador va dir: 'No és bo que un jugador de futbol tingui aquestes distraccions. Això pot afectar el seu rendiment en camp'.";
                 }
-                document.getElementById("img1").src = "https://upload.wikimedia.org/wikipedia/ru/f/f3/%D0%93%D0%B5%D0%B9%D0%BC%D0%BF%D0%BB%D0%B5%D0%B9_Clash_Royale.png";
+                document.getElementById("img1").src="clashRoyale.jpg";
             } else if (noticiaPredefinida === 4){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " provoca " + proxAdversario;
@@ -2991,16 +2993,16 @@ function tocarMusica() {
                     document.getElementById("H25").textContent = "Arsenal perd del Tottenham al clàssic";
                     document.getElementById("p1").textContent = "El Tottenham Hotspur ha guanyat de l'Arsenal al clàssic del nord de Londres. L'entrenador del Tottenham està molt content amb l'actuació dels seus jugadors. A l'entrevista post-partit, ha dit: 'El nostre equip ha jugat molt bé de l'inici al fi, els nostres jugadors s'han esforçat al màxim i això ens ha fet guanyar per 2 a 0.' Encara a les entrevistes post-partit, el jugador de l'Arsenal, Declan Rice, ha dit que l'Arsenal no ha aconseguit crear suficients opurtunitats per marcar un gol contra el Tottenham i això ha fet que l'equip perdi. Amb aquesta victòria, el Tottenham salva la mala temporada de l'equip amb aquesta victòria al clàssic. S'espera més de l'equip a l'any vinent, i aquest resultat també dificulta molt la lluita de l'Arsenal pel títol de la Premier League contra el Liverpool, que ara té un gran avantatge a la primera posició del campionat.";
                 }
-                document.getElementById("img1").src = "https://assets.goal.com/images/v3/bltd8d0187e144ae2f9/crop/MM5DKMBQGQ5DEOBRGU5G433XMU5DENRRHIYA====/GettyImages-2150545834.jpg?auto=webp&format=pjpg&width=3840&quality=60";
+                document.getElementById("img1").src="img/totxars.jpg";
             } else if (noticiaPredefinida === 6){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = "Liverpool é campeão da Premier League";
-                    document.getElementById("p1").textContent = "O Liverpool FC, comandado pelo treinador Arne Slot, é o campeão da Premier League 2024/25! Foi um dos melhores campeonatos da história do clube, na primeira temporada do treinador Arne Slot. Em uma entrevista, o jogador Mohammed Salah disse: 'Estou muito emocionado de ter vencido a Premier League com o Liverpool de novo. Espero repetir isso no ano que vem.' A Premier League é considerada por muitos o melhor campeonato de futebol do mundo, então, os jogadores, a direção e o treinador do Liverpool FC devem se orgulhar do que conseguiram fazer esse ano, após três títulos consecutivos do Manchester City.";
+                    document.getElementById("p1").textContent = "O Liverpool FC, é o campeão da Premier League 2024/25! Foi um dos melhores campeonatos da história do clube, na primeira temporada do treinador. Em uma entrevista, o jogador Mohammed Salah disse: 'Estou muito emocionado de ter vencido a Premier League com o Liverpool de novo. Espero repetir isso no ano que vem.' A Premier League é considerada por muitos o melhor campeonato de futebol do mundo, então, os jogadores, a direção e o treinador do Liverpool FC devem se orgulhar do que conseguiram fazer esse ano, após três títulos consecutivos do Manchester City.";
                 } else if (idioma === "cat"){
                     document.getElementById("H25").textContent = "Liverpool és campió de la Premier League";
-                    document.getElementById("p1").textContent = "El Liverpool FC d'Arne Slot, és el campió de la Premier League 2024/25! Ha sigut un dels millors campionats de la història del club a la primera temporada de l'entrenador Arne Slot. En una entrevist, el jugador Mohammed Salah ha dit: 'Estic molt emocionat per haver guanyat la Premier League amb el Liverpool un altre cop. Espero repetir aixó l'any vinent.' La Premier League és considerada per molts el millor campionat de futbol del món, doncs, els jugadors, la direcció i  l'entrenador del Liverpool FC han d'estar molt orgullosos del que han fet aquest any, després de tres títols seguits del Manchester City.";
+                    document.getElementById("p1").textContent = "El Liverpool FC, és el campió de la Premier League 2024/25! Ha sigut un dels millors campionats de la història del club a la primera temporada de l'entrenador nou. En una entrevist, el jugador Mohammed Salah ha dit: 'Estic molt emocionat per haver guanyat la Premier League amb el Liverpool un altre cop. Espero repetir aixó l'any vinent.' La Premier League és considerada per molts el millor campionat de futbol del món, doncs, els jugadors, la direcció i  l'entrenador del Liverpool FC han d'estar molt orgullosos del que han fet aquest any, després de tres títols seguits del Manchester City.";
                 }
-                document.getElementById("img1").src = "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/HPL2HQTOI5ASNP6E7ARC4XHQR4.jpg";
+                document.getElementById("img1").src="img/liverpoolvencepremier.jpg";
             } else if (noticiaPredefinida === 7){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = equipe + " contrata " + nome;
@@ -3009,19 +3011,7 @@ function tocarMusica() {
                     document.getElementById("H25").textContent = equipe + " fitxa a " + nome;
                     document.getElementById("p1").textContent = "Un fitxatge bombástic ha sigut anunciat: " + nome + " jugarà al " + equipe + " a les pròximes dues temporades. Els aficionats de l'equip estan molt feliços amb l'arribada del nou jugador, que va jugar en un bon nivell als últims dos anys. Amb l'arribada de " + nome + ", s'espera que el " + equipe + " millori i pugui lluitar pel títol de la Premier League.";
                 }
-                if (equipe === "Arsenal"){
-                    document.getElementById("img1").src = "https://www.arsenal.com/sites/default/files/styles/link_image_extra_large/public/images/GettyImages-884411976.jpg?auto=webp&itok=w7-4LWKS";
-                } else if (equipe === "Chelsea"){
-                    document.getElementById("img1").src = "https://baldwinboxall.co.uk/wp-content/uploads/2022/09/stanford-bridge-chelsea-fc.jpg";
-                } else if (equipe === "Liverpool"){
-                    document.getElementById("img1").src = "https://www.terraco.com/wp-content/uploads/2020/12/Liverpool-Banner-2.png";
-                } else if (equipe === "Manchester City"){
-                    document.getElementById("img1").src = "https://i.guim.co.uk/img/media/888a4d1a86c821338ae04c8af431b2d3dcb80fe6/0_346_5184_3110/master/5184.jpg?width=1200&quality=85&auto=format&fit=max&s=774f6f583792a767bcefa1abe7d000dd";
-                } else if (equipe === "Manchester United"){
-                    document.getElementById("img1").src = "https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-118886268/118886268.jpg";
-                } else if (equipe === "Tottenham Hotspur"){
-                    document.getElementById("img1").src = "https://wjgl.com/wp-content/uploads/2019/05/20181216_133837_resized-e1544985415617-1.jpg";
-                }
+                document.getElementById("img1").src="img/chegadaNovoJogador.jpg";
             } else if (noticiaPredefinida === 8){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = equipe + " vence " + ultimoAdversario;
@@ -3057,7 +3047,7 @@ function tocarMusica() {
                     document.getElementById("H25").textContent = nome + " discuteix amb aficionats del " + equipe + " a les xarxes socials";
                     document.getElementById("p1").textContent = "Després d'una seqüència de resultats a baix del que s'esperava, " + nome + " ha contestat les crítiques de l'afició a les xarxes socials. La situació ha generat molta discussió entre els fans i ha augmentat la pressió sobre el jugador.";
                 }
-                document.getElementById("img1").src = "https://st3.depositphotos.com/1017986/14049/i/450/depositphotos_140495312-stock-photo-sad-soccer-player-with-ball.jpg";
+                document.getElementById("img1").src = "img/jogadorRedesSoc.jpg";
             } else if (noticiaPredefinida === 12){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " causa polêmica em entrevista";
@@ -3066,7 +3056,7 @@ function tocarMusica() {
                     document.getElementById("H25").textContent = nome + " genera polèmica en entrevista";
                     document.getElementById("p1").textContent = "Durant una entrevista, " + nome + " ha contestat de forma mal educada una pregunta sobre el seu rendiment recent al " + equipe + ". Molta gent ha interpretat això com una crítica indirecta a l'entrenador. La direcció del " + equipe + " encara no ha dit res al respecte, però està clar que hi ha tensió en el club.";
                 }
-                document.getElementById("img1").src = "https://static.gazetaesportiva.com/uploads/imagem/2016/03/21/20160321130047_56f01aaf0cda0.jpg";
+                document.getElementById("img1").src = "img/polemicaEntrev.jpg";
             }
         }
     </script>
@@ -5092,8 +5082,8 @@ function tocarMusica() {
             <div class="close"></div>
             <br>
             <div id="P0011" class="produto">
-                <label id="LT210">Nike Mercurial Superfly 10</label>
-                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSV4b0LsshLGEEvQgGb-VkES8VzSS2lkChxwx1ow6HBV7aiA3hHCx2Idmj9UIfNvYccfO1mCj2UGVl-4WLs8nxE-hcWBYwtEvsC0KFnsme3Y5K8Gq6gqgmM5w">
+                <label id="LT210">Nayk Nerkurriel Megafly 10</label>
+                <img src="img/Products/1/Nayk Nerkurriel Megafly 10.jpg">
                 <label>70,00€</label>
                 <button id="BT52" onclick="comprar0011()">Comprar</button>
             </div>
@@ -5105,26 +5095,26 @@ function tocarMusica() {
             <div class="close"></div>
             <br>
             <div id="P0022" class="produto">
-                <label id="LT212">Bicicleta de montanha 27,5" Rockrider Expl 50</label>
-                <img src="https://contents.mediadecathlon.com/p2712064/k$7b2bab00812de7bd5eef3e48e6c06d88/sq/bicicleta-de-montana-275-rockrider-expl-50-gris-oscuro.jpg?format=auto&f=969x969">
+                <label id="LT212">Bike Mountain M1</label>
+                <img src="img/Products/2/Bike mountain M1.jpg">
                 <label>260,00€</label>
                 <button id="BT54" onclick="comprar0022()">Comprar</button>
             </div>
             <div id="P0021" class="produto">
-                <label id="LT213">Chevrolet Onix 2020</label>
-                <img src="https://cdn-images.motor.es/image/m/1320w/fotos-noticias/2019/09/chevrolet-onix-2020-201961250-1569854409_1.jpg">
+                <label id="LT213">Chevrorillo Street 2008</label>
+                <img src="img/Products/2/Chevrorillo Street 2008.jpg">
                 <label>25.873,00€</label>
                 <button id="BT55" onclick="comprar0021()">Comprar</button>
             </div>
             <div id="P0023" class="produto">
-                <label id="LT214">Kart Road Rebel KZ 2021</label>
-                <img src="https://www.kartsfrancis.com/tienda/wp-content/uploads/2022/12/image_50754305-400x482.jpg">
+                <label id="LT214">Kart Italia Modelo Gara 2020</label>
+                <img src="img/Products/2/Kart Italia modelo gara.jpg">
                 <label>5.000,00€</label>
                 <button id="BT56" onclick="comprar0023()">Comprar</button>
             </div>
             <div id="P0024" class="produto">
-                <label id="LT215">Ferrari LaFerrari 2013</label>
-                <img src="https://www.diariomotor.com/imagenes/2013/05/ferrari-laferrari-vista-superior-503013.jpg">
+                <label id="LT215">Ñerari LaÑerari 2013</label>
+                <img src="img/Products/2/Ñerari LaÑerari 2013.jpg">
                 <label>1.000.000,00€</label>
                 <button id="BT57" onclick="comprar0024()">Comprar</button>
             </div>
@@ -5137,13 +5127,13 @@ function tocarMusica() {
             <br>
             <div id="P0031" class="produto">
                 <label id="LT216B">Casa moderna</label>
-                <img src="https://www.canexel.es/wp-content/uploads/2012/09/casa-white-rock-1024x578.jpg">
+                <img src="img/Products/3/Casa moderna.jpg">
                 <label>62.580,00€</label>
                 <button id="BT59" onclick="comprar0031()">Comprar</button>
             </div>
             <div id="P0032" class="produto">
                 <label id="LT217">Casa de luxo</label>
-                <img src="https://lh3.googleusercontent.com/TRcA2b8iIDt5YV3A6sSwLP9JsnwEOqhnyiFHYimM0c6z7QCns8G6kUKi2tPh-U3yaOzA3E5111NaMmT0fRPZz7iGVapgbRyMMt-bZNNeAkrMsRo_xWefXfg=s0">
+                <img src="img/Products/3/Casa de luxo.jpg">
                 <label>2.000.000,00€</label>
                 <button id="BT60" onclick="comprar0032()">Comprar</button>
             </div>
@@ -5155,20 +5145,20 @@ function tocarMusica() {
             <div class="close"></div>
             <br>
             <div id="P0041" class="produto">
-                <label id="LT219">Samsung Galaxy S22</label>
-                <img src="https://www.backmarket.es/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D640/https://d2e6ccujb3mkqf.cloudfront.net/b12fbd31-2d50-4762-ab43-2c9b60475aa6-1_9d95cc77-8d37-47bb-a3bb-330b75274b1a.jpg">
+                <label id="LT219">Zamsunk Talacy S22</label>
+                <img src="img/Products/4/Zamsunk Talaxy S22.jpg">
                 <label>260,00€</label>
                 <button id="BT62" onclick="comprar0041()">Comprar</button>
             </div>
             <div id="P0042" class="produto">
-                <label id="LT220">Iphone 16 Pro Max</label>
-                <img src="https://media2.allzone.es/3575985-large_default/apple-iphone-16-pro-max-256gb-desert-titanium.jpg">
+                <label id="LT220">AiFon 16 Promekz</label>
+                <img src="img/Products/4/AiFon 16 Promekz.jpg">
                 <label>1.120,00€</label>
                 <button id="BT63" onclick="comprar0042()">Comprar</button>
             </div>
             <div id="P0043" class="produto">
-                <label id="LT221">PC Dell Latitude 5400</label>
-                <img src="https://m.media-amazon.com/images/I/61+9weE55YL._AC_SX679_.jpg">
+                <label id="LT221">PC Dhall Latud 5400</label>
+                <img src="img/Products/4/PC Dhall Latud 5400.jpg">
                 <label>237,00€</label>
                 <button id="BT64" onclick="comprar0043()">Comprar</button>
             </div>
@@ -5342,8 +5332,8 @@ function tocarMusica() {
         <div class="close"></div>
         <div class="produto" id="V0011" style="display: none;">
             <div class="close"></div>
-            <label id="LT222">Nike Mercurial Superfly 10</label>
-            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSV4b0LsshLGEEvQgGb-VkES8VzSS2lkChxwx1ow6HBV7aiA3hHCx2Idmj9UIfNvYccfO1mCj2UGVl-4WLs8nxE-hcWBYwtEvsC0KFnsme3Y5K8Gq6gqgmM5w">
+            <label id="LT222">Nayk Nerkurriel Megafly 10</label>
+            <img src="img/Products/1/Nayk Nerkurriel Megafly 10.jpg">
             <button id="BT65" onclick="vender0011()">Vender</button><br>
             <button id="BT66" onclick="usar0011_1()">Dar para companheiro</button>
             <div class="close"></div>
@@ -5351,16 +5341,16 @@ function tocarMusica() {
 
         <div class="produto" id="V0022" style="display: none;">
             <div class="close"></div>
-            <label id="LT223">Bicicleta de montanha 27,5" Rockrider Expl 50</label>
-            <img src="https://contents.mediadecathlon.com/p2712064/k$7b2bab00812de7bd5eef3e48e6c06d88/sq/bicicleta-de-montana-275-rockrider-expl-50-gris-oscuro.jpg?format=auto&f=969x969">
+            <label id="LT223">Bike Mountain M1</label>
+            <img src="img/Products/2/Bike mountain M1.jpg">
             <button id="BT67" onclick="usar0022_1()">Dar volta de 40Km na cidade</button><br>
             <button id="BT68" onclick="vender0022()">Vender</button>
             <div class="close"></div>
         </div>
         <div class="produto" id="V0021" style="display: none;">
             <div class="close"></div>
-            <label id="LT224">Chevrolet Onix 2020</label>
-            <img src="https://cdn-images.motor.es/image/m/1320w/fotos-noticias/2019/09/chevrolet-onix-2020-201961250-1569854409_1.jpg">
+            <label id="LT224">Chevrorillo Street 2008</label>
+            <img src="img/Products/2/Chevrorillo Street 2008.jpg">
             <button id="BT69" onclick="vender0021()">Vender</button><br>
             <button id="BT70" onclick="usar0021_1()">Dar para treinador</button><br>
             <button id="BT71" onclick="usar0021_2()">Trabalhar de Uber</button>
@@ -5368,8 +5358,8 @@ function tocarMusica() {
         </div>
         <div class="produto" id="V0023" style="display: none;">
             <div class="close"></div>
-            <label id="LT225">Kart Road Rebel KZ 2021</label>
-            <img src="https://www.kartsfrancis.com/tienda/wp-content/uploads/2022/12/image_50754305-400x482.jpg">
+            <label id="LT225">Kart Italia Modelo Gara 2020</label>
+            <img src="/img/Products/2/Kart Italia modelo gara.jpg">
             <button id="BT72" onclick="vender0023()">Vender</button><br>
             <button id="BT73" onclick="usar0023_1()">Levantamento de peso com kart</button><br>
             <button id="BT74" onclick="usar0023_2()">Ir treinar no circuito</button><br>
@@ -5378,8 +5368,8 @@ function tocarMusica() {
         </div>
         <div class="produto" id="V0024" style="display: none;">
             <div class="close"></div>
-            <label id="LT226">Ferrari LaFerrari 2013</label>
-            <img src="https://www.diariomotor.com/imagenes/2013/05/ferrari-laferrari-vista-superior-503013.jpg">
+            <label id="LT226">Ñerari LaÑerari 2013</label>
+            <img src="img/Products/2/Ñerari LaÑerari 2013.jpg">
             <button id="BT76" onclick="vender0024()">Vender</button>
             <div class="close"></div>
         </div>
@@ -5387,7 +5377,7 @@ function tocarMusica() {
         <div class="produto" id="V0031" style="display: none;">
             <div class="close"></div>
             <label id="LT227">Casa moderna</label>
-            <img src="https://www.canexel.es/wp-content/uploads/2012/09/casa-white-rock-1024x578.jpg">
+            <img src="img/Products/3/Casa moderna.jpg">
             <button id="BT77" onclick="vender0031()">Vender</button><br>
             <button id="BT78" onclick="usar0031_1()">Queimar casa</button><br>
             <button id="BT79" onclick="usar0031_2()">Dar casa para treinador</button><br>
@@ -5398,15 +5388,15 @@ function tocarMusica() {
         <div class="produto" id="V0032" style="display: none;">
             <div class="close"></div>
             <label id="LT228">Casa de luxo</label>
-            <img src="https://lh3.googleusercontent.com/TRcA2b8iIDt5YV3A6sSwLP9JsnwEOqhnyiFHYimM0c6z7QCns8G6kUKi2tPh-U3yaOzA3E5111NaMmT0fRPZz7iGVapgbRyMMt-bZNNeAkrMsRo_xWefXfg=s0">
+            <img src="img/Products/3/Casa de luxo.jpg">
             <button id="BT81" onclick="vender0032()">Vender</button>
             <div class="close"></div>
         </div>
 
         <div class="produto" id="V0041" style="display: none;">
             <div class="close"></div>
-            <label id="LT229">Samsung Galaxy S22</label>
-            <img src="https://www.backmarket.es/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D640/https://d2e6ccujb3mkqf.cloudfront.net/b12fbd31-2d50-4762-ab43-2c9b60475aa6-1_9d95cc77-8d37-47bb-a3bb-330b75274b1a.jpg">
+            <label id="LT229">Zamsunk Talacy S22</label>
+            <img src="img/Products/4/Zamsunk Talaxy S22.jpg">
             <button id="BT81b" onclick="vender0041()">Vender</button><br>
             <button id="BT82" onclick="usar0041_1()">Fazer live de Clash Royale</button><br>
             <button id="BT83" onclick="usar0041_2()">Provocar rival por Instagram</button>
@@ -5414,8 +5404,8 @@ function tocarMusica() {
         </div>
         <div class="produto" id="V0042" style="display: none;">
             <div class="close"></div>
-            <label id="LT230">Iphone 16 Pro Max</label>
-            <img src="https://media2.allzone.es/3575985-large_default/apple-iphone-16-pro-max-256gb-desert-titanium.jpg">
+            <label id="LT230">AiFon 16 Promekz</label>
+            <img src="img/Products/4/AiFon 16 Promekz.jpg">
             <button id="BT84" onclick="vender0042()">Vender</button><br>
             <button id="BT85" onclick="usar0042_1()">Fazer live de Clash Royale</button><br>
             <button id="BT86" onclick="usar0042_2()">Provocar rival por Instagram</button>
@@ -5423,8 +5413,8 @@ function tocarMusica() {
         </div>
         <div class="produto" id="V0043" style="display: none;">
             <div class="close"></div>
-            <label id="LT231">PC Dell Latitude 5400</label>
-            <img src="https://m.media-amazon.com/images/I/61+9weE55YL._AC_SX679_.jpg">
+            <label id="LT231">PC Dhall Latud 5400</label>
+            <img src="img/Products/4/PC Dhall Latud 5400.jpg">
             <button id="BT87" onclick="vender0043()">Vender</button>
             <div class="close"></div>
         </div>
@@ -7211,29 +7201,29 @@ function tocarMusica() {
                 document.getElementById("LT207").textContent = "Seu chefe aumentou seu salário para 10.000€/semana e renovou seu contrato para até a metade da temporada.";
                 document.getElementById("LT208").textContent = "Você não tem dinheiro para comprar esse produto.";
                 document.getElementById("LT209").textContent = "Chuteiras";
-                document.getElementById("LT210").textContent = "Nike Mercurial Superfly 10";
+                document.getElementById("LT210").textContent = "Nayk Nerkurriel Megafly 10";
                 document.getElementById("LT211").textContent = "Veículos";
-                document.getElementById("LT212").textContent = "Bicicleta de montanha 27,5' Rockrider Expl 50";
-                document.getElementById("LT213").textContent = "Chevrolet Onix 2020";
-                document.getElementById("LT214").textContent = "Kart Road Rebel KZ 2021";
-                document.getElementById("LT215").textContent = "Ferrari LaFerrari 2013";
+                document.getElementById("LT212").textContent = "Bike Mountain M1";
+                document.getElementById("LT213").textContent = "Chevrorillo Street 2008";
+                document.getElementById("LT214").textContent = "Kart Italia Modelo Gara 2020";
+                document.getElementById("LT215").textContent = "Ñerari LaÑerari 2013";
                 document.getElementById("LT216").textContent = "Casas";
                 document.getElementById("LT216B").textContent = "Casa moderna";
                 document.getElementById("LT217").textContent = "Casa de luxo";
                 document.getElementById("LT218").textContent = "Dispositivos eletrônicos";
-                document.getElementById("LT219").textContent = "Samsung Galaxy S22";
-                document.getElementById("LT220").textContent = "Iphone 16 Pro Max";
-                document.getElementById("LT221").textContent = "PC Dell Latitude 5400";
-                document.getElementById("LT222").textContent = "Nike Mercurial Superfly 10";
-                document.getElementById("LT223").textContent = "Bicicleta de montanha 27,5' Rockrider Expl 50";
-                document.getElementById("LT224").textContent = "Chevrolet Onix 2020";
-                document.getElementById("LT225").textContent = "Kart Road Rebel KZ 2021";
-                document.getElementById("LT226").textContent = "Ferrari LaFerrari 2013";
+                document.getElementById("LT219").textContent = "Zamsunk Talacy S22";
+                document.getElementById("LT220").textContent = "AiFon 16 Promekz";
+                document.getElementById("LT221").textContent = "PC Dhall Latud 5400";
+                document.getElementById("LT222").textContent = "Nayk Nerkurriel Megafly 10";
+                document.getElementById("LT223").textContent = "Bike Mountain M1";
+                document.getElementById("LT224").textContent = "Chevrorillo Street 2008";
+                document.getElementById("LT225").textContent = "Kart Italia Modelo Gara 2020";
+                document.getElementById("LT226").textContent = "Ñerari LaÑerari 2013";
                 document.getElementById("LT227").textContent = "Casa moderna";
                 document.getElementById("LT228").textContent = "Casa de luxo";
-                document.getElementById("LT229").textContent = "Samsung Galaxy S22";
-                document.getElementById("LT230").textContent = "Iphone 16 Pro Max";
-                document.getElementById("LT231").textContent = "PC Dell Latitude 5400";
+                document.getElementById("LT229").textContent = "Zamsunk Talacy S22";
+                document.getElementById("LT230").textContent = "AiFon 16 Promekz";
+                document.getElementById("LT231").textContent = "PC Dhall Latud 5400";
                 document.getElementById("LT232").textContent = "Volta na cidade concluída com sucesso";
                 document.getElementById("LT233").textContent = "Energia -40";
                 document.getElementById("LT234").textContent = "Velocidade +1";
@@ -7786,29 +7776,29 @@ function tocarMusica() {
                 document.getElementById("LT207").textContent = "L'entrenador ha augmentat el teu salari a 10.000€ fins a la meitat de la temporada.";
                 document.getElementById("LT208").textContent = "No tens diners per comprar aquest producte.";
                 document.getElementById("LT209").textContent = "Botes";
-                document.getElementById("LT210").textContent = "Nike Mercurial Superfly 10";
+                document.getElementById("LT210").textContent = "Nayk Nerkurriel Megafly 10";
                 document.getElementById("LT211").textContent = "Vehicles";
-                document.getElementById("LT212").textContent = "Bicicleta de montanha 27,5' Rockrider Expl 50";
-                document.getElementById("LT213").textContent = "Chevrolet Onix 2020";
-                document.getElementById("LT214").textContent = "Kart Road Rebel KZ 2021";
-                document.getElementById("LT215").textContent = "Ferrari LaFerrari 2013";
+                document.getElementById("LT212").textContent = "Bike Mountain M1";
+                document.getElementById("LT213").textContent = "Chevrorillo Street 2008";
+                document.getElementById("LT214").textContent = "Kart Italia Modelo Gara 2020";
+                document.getElementById("LT215").textContent = "Ñerari LaÑerari 2013";
                 document.getElementById("LT216").textContent = "Cases";
                 document.getElementById("LT216B").textContent = "Casa moderna";
                 document.getElementById("LT217").textContent = "Casa de luxe";
                 document.getElementById("LT218").textContent = "Dispositius electrònics";
-                document.getElementById("LT219").textContent = "Samsung Galaxy S22";
-                document.getElementById("LT220").textContent = "Iphone 16 Pro Max";
-                document.getElementById("LT221").textContent = "PC Dell Latitude 5400";
-                document.getElementById("LT222").textContent = "Nike Mercurial Superfly 10";
-                document.getElementById("LT223").textContent = "Bicicleta de muntanya 27,5' Rockrider Expl 50";
-                document.getElementById("LT224").textContent = "Chevrolet Onix 2020";
-                document.getElementById("LT225").textContent = "Kart Road Rebel KZ 2021";
-                document.getElementById("LT226").textContent = "Ferrari LaFerrari 2013";
+                document.getElementById("LT219").textContent = "Zamsunk Talacy S22";
+                document.getElementById("LT220").textContent = "AiFon 16 Promekz";
+                document.getElementById("LT221").textContent = "PC Dhall Latud 5400";
+                document.getElementById("LT222").textContent = "Nayk Nerkurriel Megafly 10";
+                document.getElementById("LT223").textContent = "Bike Mountain M1";
+                document.getElementById("LT224").textContent = "Chevrorillo Street 2008";
+                document.getElementById("LT225").textContent = "Kart Italia Modelo Gara 2020";
+                document.getElementById("LT226").textContent = "Ñerari LaÑerari 2013";
                 document.getElementById("LT227").textContent = "Casa moderna";
                 document.getElementById("LT228").textContent = "Casa de luxe";
-                document.getElementById("LT229").textContent = "Samsung Galaxy S22";
-                document.getElementById("LT230").textContent = "Iphone 16 Pro Max";
-                document.getElementById("LT231").textContent = "PC Dell Latitude 5400";
+                document.getElementById("LT229").textContent = "Zamsunk Talacy S22";
+                document.getElementById("LT230").textContent = "AiFon 16 Promekz";
+                document.getElementById("LT231").textContent = "PC Dhall Latud 5400";
                 document.getElementById("LT232").textContent = "Volta per la ciutat feta amb èxit";
                 document.getElementById("LT233").textContent = "Energia -40";
                 document.getElementById("LT234").textContent = "Velocidade +1";

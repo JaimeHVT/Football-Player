@@ -2405,6 +2405,8 @@ function tocarMusica() {
             }
         }
 
+        
+
         function voltarAoJogo(){
             document.getElementById("D11a").style.display = "none";
             document.getElementById("D11b").style.display = "none";
@@ -3492,6 +3494,36 @@ function tocarMusica() {
         
     </script>
 
+    <div id="anuncioTelaCheia" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; color:#fff; text-align:center; z-index:9999;">
+        <h2>Ad</h2>
+        <!-- Banner AdSense dentro do div -->
+        <ins class="adsbygoogle"
+             style="display:block; width:320px; height:100px; margin: 50px auto;"
+             data-ad-client="ca-pub-8858071838"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"
+             data-adtest="on"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <p>Wait 5 seconds...</p>
+    </div>
+
+    <script>
+        function mostrarAnuncio() {
+        const ad = document.getElementById("anuncioTelaCheia");
+        ad.style.display = "block";
+
+        setTimeout(() => {
+            ad.style.display = "none";
+            // continuar o jogo
+            iniciarJogo();
+        }, 5000); // 5 segundos
+    }
+    </script>
+
+
     <div class="menu" id="menuHabilidades" style="display: none;">
         <div class="close"></div>
         <label id="habDefesaLabel">Defesa:</label>
@@ -3870,7 +3902,7 @@ function tocarMusica() {
         <br>
         <br>
         <div id="D7" style="display: block">
-          <button onclick="iniciarJogo()">Iniciar jogo</button>
+          <button onclick="mostrarAnuncio()">Iniciar jogo</button>
           <div class="close"></div>
         </div>
         <div id="D8" class="jogo" style="display: none;">
@@ -5427,12 +5459,23 @@ function tocarMusica() {
     </div>
 
     <div id="D32" class="aviso" style="display: none;">
-        <label id="LT239">Casa queimada!</label>
-        <div class="close"></div>
-        <video id="VID1" src="img/casaQueimandoSS.mp4" autoplay controls muted></video>
-        <div class="close"></div>
-        <button onclick="document.getElementById('VID1').pause(); irParaMenu(), irParaVida()">Ok</button>
+    <label id="LT239">Casa queimada!</label>
+
+    <div class="close"></div>
+        <iframe
+            id="VID1"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/Et_ywJb262E?autoplay=1&mute=1"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            mute="1"
+            allowfullscreen>
+        </iframe>
+    <div class="close"></div>
+    <button onclick="irParaMenu(); irParaVida();">Ok</button>
     </div>
+
 
     <div id="D33" class="aviso" style="display: none;">
         <label id="LT240">O treinador está muito feliz com a casa que você deu de presente!</label>
@@ -5484,20 +5527,29 @@ function tocarMusica() {
             <label id="LT252">Relação com a torcida +2</label>
         </div>
         <div class="close"></div>
-        <button onclick="irParaMenu(), irParaVida()">Ok</button>
+        <button onclick="irParaMenu(); irParaVida()">Ok</button>
     </div>
 
     <div id="D39" class="aviso" style="display: none;">
-        <label id="LT253">Você deu voltas e melhorou sua habilidade de pilotar karts!</label>
-        <div class="close"></div>
-        <video id="VID2" src="img/corridaKartSS.mp4" autoplay controls muted></video>
+    <label id="LT253">Você deu voltas e melhorou sua habilidade de pilotar karts!</label>
+    
+    <div class="close"></div>
+        <iframe
+            id="VID2"
+            style="width:100%; aspect-ratio:16/9;"
+            src="https://www.youtube.com/embed/nuPhGhzaloc?autoplay=1&mute=1"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            mute="1"
+            allowfullscreen>
+        </iframe>
         <div class="close"></div>
         <div class="infoStats">
             <label id="LT254">Energia -50</label><br>
             <label id="LT255">Habilidade kart +2</label><br>
             <label id="LT256">Despesas de combustível -35€</label>
         </div>
-        <button onclick="document.getElementById('VID2').pause(); irParaMenu(), irParaVida()">Ok</button>
+        <button onclick="irParaMenu(); irParaVida();">Ok</button>
     </div>
 
     <div id="D46" class="aviso" style="display: none;">
@@ -5658,10 +5710,6 @@ function tocarMusica() {
                 let video = document.getElementById("VID2");
                 noticiaPredefinida = 1;
                 gerarNoticia();
-                video.muted = false;
-                video.volume = 1;
-                video.currentTime = 0;
-                video.play();
             } else {
                 document.getElementById("D25").style.display="none";
                 document.getElementById("D27").style.display="block";
@@ -5695,10 +5743,6 @@ function tocarMusica() {
             document.getElementById("D32").style.display="block";
             document.getElementById("D25").style.display="none";
             let video = document.getElementById("VID1");
-            video.muted = false;
-            video.volume = 1;
-            video.currentTime = 0;
-            video.play();
         }
 
         function usar0031_2(){
@@ -5901,7 +5945,15 @@ function tocarMusica() {
     <div id="D47" class="aviso" style="display: none;">
         <label>Você perdeu.</label>
         <div class="close"></div>
-        <video id="VID3" src="img/corridaKartSS.mp4" autoplay controls muted></video>
+        <iframe
+            id="VID2"
+            style="width:100%; aspect-ratio:16/9;"
+            src="https://www.youtube.com/embed/nuPhGhzaloc?autoplay=1&mute=1"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            mute="1"
+            allowfullscreen>
+        </iframe>
         <div class="close"></div>
         <div class="infoStats">
             <label id="LT276">Habilidade kart +2</label><br>
@@ -5910,13 +5962,21 @@ function tocarMusica() {
             <label id="LT278">Despesas de combustível -35€</label>
         </div>
         <div class="close"></div>
-        <button onclick="document.getElementById('VID3').pause(); irParaMenu()">Ok</button>
+        <button onclick="irParaMenu()">Ok</button>
     </div>
 
     <div id="D48" class="aviso" style="display: none;">
         <label id="LT279">Você ganhou.</label>
         <div class="close"></div>
-        <video id="VID4" src="img/corridaKartSS.mp4" autoplay controls muted></video>
+        <iframe
+            id="VID2"
+            style="width:100%; aspect-ratio:16/9;"
+            src="https://www.youtube.com/embed/nuPhGhzaloc?autoplay=1&mute=1"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            mute="1"
+            allowfullscreen>
+        </iframe>
         <div class="close"></div>
         <div class="infoStats">
             <label id="LT279b">Habilidade kart +2</label><br>
@@ -5925,7 +5985,7 @@ function tocarMusica() {
             <label id="LT281">Despesas de combustível -35€</label>
         </div>
         <div class="close"></div>
-        <button onclick="document.getElementById('VID4').pause(); irParaMenu()">Ok</button>
+        <button onclick="irParaMenu(); irParaVida();">Ok</button>
     </div>
 
     <div id="D52" class="aviso" style="display: none;">

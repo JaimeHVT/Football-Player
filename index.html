@@ -3538,13 +3538,22 @@ function tocarMusica() {
 
     <script>
         function mostrarAnuncio() {
-        // abre o anúncio (clique do usuário)
-        window.open("https://otieu.com/4/10336152", "_blank");
+            // 1️⃣ abre o anúncio IMEDIATAMENTE
+            const adWindow = window.open(
+                 "https://otieu.com/4/10336152",
+                 "_blank"
+            );
 
-        // inicia a partida após 5 segundos
-        setTimeout(function () {
-            iniciarJogo();
-        }, 5000);
+        // 2️⃣ se o popup foi bloqueado
+            if (!adWindow) {
+                iniciarPartida();
+                return;
+            }
+
+            // 3️⃣ inicia o jogo após 5s
+            setTimeout(function () {
+                iniciarPartida();
+            }, 5000);
         }
     </script>
 

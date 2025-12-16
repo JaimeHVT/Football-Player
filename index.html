@@ -481,6 +481,7 @@
         let forcaEquipe = 0;
         let forcaRival = 0;
         let audio;
+        let jogoIniciado = 0;
         let energiaTreino = {
             defesa: 22,
             ataque: 22,
@@ -518,6 +519,7 @@
             comissaoBancaria: 30,
             impostoDeRenda: 100,
             impostoDePropriedades: 100,
+            aluguelApartamento: 500,
         }
 
         let estatisticasPartida = {
@@ -760,10 +762,16 @@ function tocarMusica() {
 
     <div id="D88" class="aviso">
         <h1>Privacy Policy</h1>
-        <p>This site displays ads provided by Google AdSense.</p>
+        <p>This site displays ads provided by PropellerAds.</p>
         <p>Google may use cookies to show personalized ads.</p>
         <p>No personal data is collected directly by this site.</p>
-        <button onclick="document.getElementById('D88').style.display='none'; document.getElementById('D85').style.display='block';">Ok</button>
+        <button onclick="
+        if (jogoIniciado === 0){
+            document.getElementById('D88').style.display='none'; document.getElementById('D85').style.display='block';
+        } else {
+            irParaMenu();
+        }
+            ">Ok</button>
         <button onclick="document.getElementById('D88').style.display='none'; document.getElementById('D89').style.display='block';">About the game</button>
     </div>
 
@@ -781,8 +789,8 @@ function tocarMusica() {
         <div class="close"></div>
         <h2>SELECT YOUR LANGUAGE</h2>
         <div class="close"></div>
-        <img class="bandeiraIdioma" height="200px" width="300px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" onclick="mudarIdioma('pt-Br'); document.getElementById('D86').style.display='flex'; document.getElementById('D85').style.display='none'"><br>
-        <img class="bandeiraIdioma" height="200px" width="300px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/1200px-Flag_of_Catalonia.svg.png" onclick="mudarIdioma('cat'); document.getElementById('D86').style.display='flex'; document.getElementById('D85').style.display='none'">
+        <img class="bandeiraIdioma" height="200px" width="300px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png" onclick="mudarIdioma('pt-Br'); document.getElementById('D86').style.display='flex'; document.getElementById('D85').style.display='none'; jogoIniciado = 1;"><br>
+        <img class="bandeiraIdioma" height="200px" width="300px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/1200px-Flag_of_Catalonia.svg.png" onclick="mudarIdioma('cat'); document.getElementById('D86').style.display='flex'; document.getElementById('D85').style.display='none'; jogoIniciado = 1;">
         <div class="close"></div>
     </div>
 
@@ -3104,16 +3112,17 @@ function tocarMusica() {
         <hr>
         <div class="botoes-menu">
             <button id="BMT1" onclick="avancarDia(); atualizarMenu()">Avançar</button>
-            <button id="BMT2" onclick="verHabilidades()">Habilidades</button>
-            <button id="BMT3" onclick="irParaLoja()">Comprar</button>
-            <button id="BMT4" onclick="irParaVida()">Vida</button>
-            <button id="BMT5" onclick="irParaRelacoes()">Relações</button>
-            <button id="BMT6" onclick="irParaEntrevista()">Dar entrevista</button>
-            <button id="BMT7" onclick="irParaEstatísticas()">Estatísticas</button>
-            <button id="BMT8" onclick="irParaPlayerPoints()">Player Points</button>
-            <button id="BMT9" onclick="salvarJogo()">Salvar jogo</button>
-            <button id="BMT10" onclick="carregarJogo()">Carregar jogo</button>
-            <button id="BMT11" onclick="irParaIdiomas()">Mudar idioma</button>
+            <button id="BMT2" onclick="verHabilidades()">HABILIDADES</button>
+            <button id="BMT3" onclick="irParaLoja()">COMPRAR</button>
+            <button id="BMT4" onclick="irParaVida()">VIDA</button>
+            <button id="BMT5" style="display: none;" onclick="irParaRelacoes()">RELAÇÕES</button>
+            <button id="BMT6" style="display: none;" onclick="irParaEntrevista()">DAR ENTREVISTA</button>
+            <button id="BMT7" style="display: none;" onclick="irParaEstatísticas()">ESTATÍSTICAS</button>
+            <button id="BMT8" onclick="irParaPlayerPoints()" style="display: none;">PLAYER POINTS</button>
+            <button id="BMT9" onclick="salvarJogo()">SALVAR JOGO</button>
+            <button id="BMT10" onclick="carregarJogo()">CARREGAR JOGO</button>
+            <button id="BMT11" onclick="irParaIdiomas()">MUDAR IDIOMA</button>
+            <button id="BMT12" onclick="irParaPdP()">POLÍTICA DE PRIVACIDADE</button>
         </div>
     </div>
 
@@ -3473,9 +3482,17 @@ function tocarMusica() {
                 atualizarMenu();
                 irParaMenu();
 
-                alert("Jogo carregado com sucesso!");
+                if (idioma === "pt-Br"){
+                    alert("Jogo carregado com sucesso!");
+                } else if (idioma === "cat"){
+                    alert("Joc carregat amb èxit!");
+                }
             } else {
-                alert("Nenhum jogo salvo encontrado.");
+                if (idioma === "pt-Br"){
+                    alert("Nenhum jogo salvo encontrado 😥");
+                } else if (idioma === "cat"){
+                    alert("No s'ha trobat cap joc guardat 😥");
+                }
             }
         }
 
@@ -3720,13 +3737,17 @@ function tocarMusica() {
             document.getElementById("D82").style.display="none";
             document.getElementById("D84").style.display="none";
             document.getElementById("D87").style.display="none";
+            document.getElementById("D88").style.display="none";
             atualizarObjetivos();
             arrendondarVariaveis();
             atualizarMenu();
         }
-    </script>
 
-    <script>
+        function irParaPdP(){
+            document.getElementById("menu").style.display="none";
+            document.getElementById("D88").style.display="block";
+        }
+    
         function irParaIdiomas(){
             document.getElementById("menu").style.display="none";
             document.getElementById("D84").style.display="block";
@@ -6245,12 +6266,14 @@ function tocarMusica() {
                 document.getElementById("L29").textContent = "Imposto de renda: " + despesas.impostoDeRenda + " €";
                 document.getElementById("L31").textContent = "Comissões bancárias: " + despesas.comissaoBancaria + " €";
                 document.getElementById("L32").textContent = "Dados móveis: " + despesas.dadosMoveis + " €";
+                document.getElementById("L32").textContent = "Aluguel do apartamento: " + despesas.aluguelApartamento + " €";
             } else if (idioma === "cat"){
                 document.getElementById("L27").textContent = "Menjar: " + despesas.comida + " €";
                 document.getElementById("L28").textContent = "Transport: " + despesas.transporte + " €";
                 document.getElementById("L29").textContent = "Impost sobre la renda: " + despesas.impostoDeRenda + " €";
                 document.getElementById("L31").textContent = "Comissions bancàries: " + despesas.comissaoBancaria + " €";
                 document.getElementById("L32").textContent = "Datos: " + despesas.dadosMoveis + " €";
+                document.getElementById("L32").textContent = "Lloguer pis: " + despesas.aluguelApartamento + " €";
             }
         }
 
@@ -6269,7 +6292,7 @@ function tocarMusica() {
         }
 
         function chanceComida(){
-            dinheiro = dinheiro - despesas.comida - despesas.comissaoBancaria - despesas.dadosMoveis - despesas.impostoDeRenda - despesas.transporte;
+            dinheiro = dinheiro - despesas.comida - despesas.comissaoBancaria - despesas.dadosMoveis - despesas.impostoDeRenda - despesas.transporte - despesas.aluguelApartamento;
 
             if (despesas.comida === 200){
                 let chance = Math.random();
@@ -7531,19 +7554,20 @@ function tocarMusica() {
                 document.getElementById("BO8").textContent = "Resgatar recompensa"
                 document.getElementById("BO9").textContent = "Resgatar recompensa"
 
-                document.getElementById("BMT1").textContent = "Avançar";
-                document.getElementById("BMT2").textContent = "Habilidades";
-                document.getElementById("BMT3").textContent = "Comprar";
-                document.getElementById("BMT4").textContent = "Vida";
-                document.getElementById("BMT5").textContent = "Relações";
-                document.getElementById("BMT6").textContent = "Dar entrevista";
-                document.getElementById("BMT7").textContent = "Estatísticas";
-                document.getElementById("BMT8").textContent = "PlayerPoints";
-                document.getElementById("BMT9").textContent = "Salvar jogo";
-                document.getElementById("BMT10").textContent = "Carregar jogo";
-                document.getElementById("BMT11").textContent = "Mudar idioma";
+                document.getElementById("BMT1").textContent = "AVANÇAR";
+                document.getElementById("BMT2").textContent = "HABILIDADES";
+                document.getElementById("BMT3").textContent = "COMPRAR";
+                document.getElementById("BMT4").textContent = "VIDA";
+                document.getElementById("BMT5").textContent = "RELAÇÕES";
+                document.getElementById("BMT6").textContent = "DAR ENTREVISTA";
+                document.getElementById("BMT7").textContent = "ESTATÍSTICAS";
+                document.getElementById("BMT8").textContent = "PLAYER POINTS";
+                document.getElementById("BMT9").textContent = "SALVAR JOGO";
+                document.getElementById("BMT10").textContent = "CARREGAR JOGO";
+                document.getElementById("BMT11").textContent = "MUDAR IDIOMA";
+                document.getElementById("BMT12").textContent = "POLÍTICA DE PRIVACIDADE";
 
-                document.getElementById("L39").textContent = "Português";
+                document.getElementById("L39").textContent = "PORTUGUÊS";
 
             } else if (idioma === "cat"){
 
@@ -8103,21 +8127,24 @@ function tocarMusica() {
                 document.getElementById("BO8").textContent = "Resgatar recompensa"
                 document.getElementById("BO9").textContent = "Resgatar recompensa"
 
-                document.getElementById("BMT1").textContent = "Avançar";
-                document.getElementById("BMT2").textContent = "Habilitats";
-                document.getElementById("BMT3").textContent = "Comprar";
-                document.getElementById("BMT4").textContent = "Vida";
-                document.getElementById("BMT5").textContent = "Relacions";
-                document.getElementById("BMT6").textContent = "Donar entrevista";
-                document.getElementById("BMT7").textContent = "Estadístiques";
-                document.getElementById("BMT8").textContent = "PlayerPoints";
-                document.getElementById("BMT9").textContent = "Guardar joc";
-                document.getElementById("BMT10").textContent = "Carregar joc";
-                document.getElementById("BMT11").textContent = "Canviar idioma";
+                document.getElementById("BMT1").textContent = "AVANÇAR";
+                document.getElementById("BMT2").textContent = "HABILITATS";
+                document.getElementById("BMT3").textContent = "COMPRAR";
+                document.getElementById("BMT4").textContent = "VIDA";
+                document.getElementById("BMT5").textContent = "RELACIONS";
+                document.getElementById("BMT6").textContent = "DONAR ENTREVISTA";
+                document.getElementById("BMT7").textContent = "ESTADÍSTIQUES";
+                document.getElementById("BMT8").textContent = "PLAYERPOINTS";
+                document.getElementById("BMT9").textContent = "GUARDAR JOC";
+                document.getElementById("BMT10").textContent = "CARREGAR JOC";
+                document.getElementById("BMT11").textContent = "CANVIAR IDIOMA";
+                document.getElementById("BMT12").textContent = "POLÍTICA DE PRIVACITAT";
                 
-                document.getElementById("L39").textContent = "Català";
+                document.getElementById("L39").textContent = "CATALÀ";
 
             }
+
+            gerarNoticia();
         }
     
     </script>

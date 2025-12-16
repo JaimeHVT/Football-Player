@@ -3538,15 +3538,14 @@ function tocarMusica() {
 
     <script>
         function mostrarAnuncio() {
-        const ad = document.getElementById("anuncioTelaCheia");
-        ad.style.display = "block";
+        // abre o anúncio (clique do usuário)
+        window.open("https://otieu.com/4/10336152", "_blank");
 
-        setTimeout(() => {
-            ad.style.display = "none";
-            // continuar o jogo
+        // inicia a partida após 5 segundos
+        setTimeout(function () {
             iniciarJogo();
-        }, 5000); // 5 segundos
-    }
+        }, 5000);
+        }
     </script>
 
 

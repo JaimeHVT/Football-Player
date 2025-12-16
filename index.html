@@ -3434,7 +3434,11 @@ function tocarMusica() {
                 forcaRival: forcaRival,
             };
             localStorage.setItem("meuJogoSalvo", JSON.stringify(dados));
-            alert("Jogo salvo com sucesso!");
+            if (idioma === "pt-Br"){
+                alert("Jogo salvo com sucesso!");
+            } else if (idioma === "cat"){
+                alert("Joc guardat amb èxit!");
+            }
         }
 
         function carregarJogo(){
@@ -5376,7 +5380,7 @@ function tocarMusica() {
     </script>
 
     <div class="menu" id="D25" style="display: none;">
-        <button onclick="irParaMenu()" style="width: 200px; border-radius: 12px;">Voltar</button>
+        <button id="BT136" onclick="irParaMenu()" style="width: 200px; border-radius: 12px;">Voltar</button>
         <div class="close"></div>
         <div class="produto" id="V0011" style="display: none;">
             <div class="close"></div>
@@ -7548,6 +7552,7 @@ function tocarMusica() {
                 document.getElementById("BT133").textContent = "A temporada da equipe está sendo boa."
                 document.getElementById("BT134").textContent = "A temporada da equipe está sendo ruim, a equipe tem que contratar jogadores melhores."
                 document.getElementById("BT135").textContent = "Voltar"
+                document.getElementById("BT135").textContent = "Voltar"
 
                 document.getElementById("alturaVelocidadeLabel").textContent = "velocidade:"
                 document.getElementById("alturaForcaLabel").textContent = "força:"
@@ -8124,6 +8129,7 @@ function tocarMusica() {
                 document.getElementById("BT133").textContent = "L'equip està fent una bona temporada."
                 document.getElementById("BT134").textContent = "La temporada està siguent dolenta, l'equip necessita millors jugadors."
                 document.getElementById("BT135").textContent = "Tornar"
+                document.getElementById("BT136").textContent = "Tornar"
 
                 document.getElementById("BO1").textContent = "Resgatar recompensa"
                 document.getElementById("BO2").textContent = "Resgatar recompensa"

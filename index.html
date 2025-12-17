@@ -96,6 +96,10 @@
                 color: grey;
             }
 
+            .aviso h1{
+                font-family: 'Lexend', Verdana;
+            }
+
             .decisao{
                 height: 100%;
                 width: 100%;
@@ -430,6 +434,7 @@
     <script>
         let idioma = "pt-Br";
         let nome = "";
+        let numJogos = 0;
         let dinheiro = 1000;
         let equipe= "";
         let salario = 0;
@@ -761,7 +766,7 @@ function tocarMusica() {
     </div>
 
     <div id="D88" class="aviso">
-        <h1>Privacy Policy</h1>
+        <h1 style="color: aqua;">Privacy Policy</h1>
         <p>This site displays ads provided by PropellerAds.</p>
         <p>Google may use cookies to show personalized ads.</p>
         <p>No personal data is collected directly by this site.</p>
@@ -2488,6 +2493,17 @@ function tocarMusica() {
 
         function finalizarJogo(){
 
+            numJogos ++;
+
+            if (numJogos === 1){
+                document.getElementById("D90").style.display="block";
+                document.getElementById("BMT7").style.display="block";
+                document.getElementById("BMT7").style.backgroundColor="green";
+            } else {
+                document.getElementById("BMT7").style.backgroundColor="#222";
+                document.getElementById("D90").style.display="none";
+            }
+
             ultimoAdversario = proxAdversario;
             document.getElementById("D6").style.display= "none";
             document.getElementById("D7").style.display= "block";
@@ -3110,6 +3126,9 @@ function tocarMusica() {
             </div>
         </div>
         <hr>
+        <div id="D90" class="aviso" style="display: none;">
+            <h1 id="H1T1" style="color: greenyellow;">VOCÊ PODE VER SUAS ESTATÍSTICAS CLICANDO NO BOTÃO DE ESTATÍSTICAS</h1>
+        </div>
         <div class="botoes-menu">
             <button id="BMT1" onclick="avancarDia(); atualizarMenu()">Avançar</button>
             <button id="BMT2" onclick="verHabilidades()">HABILIDADES</button>
@@ -3432,6 +3451,7 @@ function tocarMusica() {
                 calendarioEquipe: calendarioEquipe,
                 forcaEquipe: forcaEquipe,
                 forcaRival: forcaRival,
+                numJogos: numJogos,
             };
             localStorage.setItem("meuJogoSalvo", JSON.stringify(dados));
             if (idioma === "pt-Br"){
@@ -3447,6 +3467,7 @@ function tocarMusica() {
                 const dados = JSON.parse(dadosSalvos);
 
                 nome = dados.nome;
+                numJogos = dados.numJogos
                 dia = dados.dia;
                 ano = dados.ano;
                 energia = dados.energia;
@@ -6374,6 +6395,10 @@ function tocarMusica() {
         function irParaEstatísticas(){
             document.getElementById("menu").style.display="none";
             document.getElementById("D72").style.display="block";
+            if (numJogos === 1){
+                document.getElementById("BMT7").style.backgroundColor="#222";
+                document.getElementById("D90").style.display="none";
+            }
             document.getElementById("LS1-ger").textContent=estatisticasCarreira.geral.gols;
             document.getElementById("LS2-ger").textContent=estatisticasCarreira.geral.assistencias;
             document.getElementById("LS3-ger").textContent=estatisticasCarreira.geral.jogosSemSofrerGols;
@@ -7416,6 +7441,8 @@ function tocarMusica() {
                 document.getElementById("H2T11").textContent = "Temporada 30/31"
                 document.getElementById("H2T12").textContent = "Objetivos:"
 
+                document.getElementById("H1T1").textContent = "VOCÊ PODE VER SUAS ESTATÍSTICAS CLICANDO NO BOTÃO DE ESTATÍSTICAS"
+
                 document.getElementById("BT1").textContent = "Modo carreira"
                 document.getElementById("BT2").textContent = "Campeonatos"
                 document.getElementById("BT3").textContent = "Nova carreira"
@@ -7993,6 +8020,8 @@ function tocarMusica() {
                 document.getElementById("H2T10").textContent = "Temporada 29/30"
                 document.getElementById("H2T11").textContent = "Temporada 30/31"
                 document.getElementById("H2T12").textContent = "Objectius:"
+
+                document.getElementById("H1T1").textContent = "POTS VEURE LES TEVES ESTADÍSTIQUES CLICANT EL BOTÓ D'ESTADÍSTIQUES"
 
                 document.getElementById("BT1").textContent = "Mode carrera"
                 document.getElementById("BT2").textContent = "Campionats"

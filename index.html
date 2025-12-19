@@ -487,6 +487,7 @@
         let forcaRival = 0;
         let audio;
         let jogoIniciado = 0;
+        let tutorial2feito = 0;
         let energiaTreino = {
             defesa: 22,
             ataque: 22,
@@ -497,6 +498,7 @@
 
         let produtos = {
             p0011: 0,
+            p0012: 0,
             p0021: 0,
             p0022: 0,
             p0023: 0,
@@ -2993,6 +2995,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "El jove jugador de 17 anys, " + nome + ", acaba de pujar a l'equip principal del " + equipe + " i sembla tenir un futur brillant. Ell va ser el " + posicao + " més destacat del club a l'equip sub-16.";
                 }
                 document.getElementById("img1").src="img/chegadaNovoJogador.jpg";
+
             } else if (noticiaPredefinida === 1){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " é visto dando voltas de kart";
@@ -3002,6 +3005,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "Ahir a la tarda, " + nome + " va ser vist donant voltes de kart a un circuit. Això pot ser considerat com a esport de risc per alguns equips, i en els contractes dels jugadors és prohibit practicar esports de risc. L'entrenador del " + equipe + " ha dit en una entrevista: '" +nome + " és un jugador de futbol responsable i que sap què fa. Si ell dóna voltes amb un kart és perquè sap conduir i sap que això no afectará el seu rendiment a l'equip.' Les paraules de l'entrenador sorpreenen algunes persones al món del futbol. Però la pregunta és: " + nome + " realment sap què fa? Aquesta actitud no tindrá conseqüències dolentes al futur?";
                 }
                 document.getElementById("img1").src="img/Kart.jpg";
+
             } else if (noticiaPredefinida === 2){
                 document.getElementById("H25").textContent = equipe + " contrata " + nome;
                 document.getElementById("p1").textContent = nome + " foi contratado pelo " + equipe + ". O jogador de " + idade + " anos, que teve um grande início de carreira no futebol inglês, recebeu uma proposta da equipe após terminar seu contrato com a equipe anterior. A torcida do " + equipe + " está muito feliz com a chegada do novo jogador. Em uma entrevista, um torcedor falou: '"  +nome + "é um jogador de alto nível que com certeza poderá ajudar o clube a conseguir bons resultados. Tenho muita confiança nele.' Após essa declaração do torcedor, só o tempo dirá se " + nome + " terá um bom desempenho no " + equipe + ".";
@@ -3010,6 +3014,7 @@ function tocarMusica() {
                 } else if (equipe === "Newcastle United"){
                     document.getElementById("img1").src="img/chegadaNovoJogador.jpg";
                 }
+
             } else if (noticiaPredefinida === 3){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " faz live de Clash Royale para o YouTube";
@@ -3019,6 +3024,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = nome + " ha fet un directe jugant Clash Royale, un joc de mòbil molt popular. Ell va poder interagir amb els fans al directe, però sembla que l'entrenador del " + equipe + " no està content amb l'actitud del jugador. En una entrevista, l'entrenador va dir: 'No és bo que un jugador de futbol tingui aquestes distraccions. Això pot afectar el seu rendiment en camp'.";
                 }
                 document.getElementById("img1").src="clashRoyale.jpg";
+
             } else if (noticiaPredefinida === 4){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " provoca " + proxAdversario;
@@ -3028,6 +3034,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = nome + " ha fet una publicació a Instagram provocant l'equip del " + proxAdversario + ". A la publicació, diu que el pròxim partit serà el més fàcil de la temporada, ja que jugarà contra un equip sense nivell professional. Aquesta publicació ha generat molta polèmica entre l'afició del " + equipe + " i del " + proxAdversario + ". Aviat veurem com serà el partit entre els dos equips i com aquesta publicació pot afectar el rendiment dels jugadors.";
                 }
                 document.getElementById("img1").src = "https://f.hellowork.com/blogdumoderateur/2020/10/instagram-strategie-reussie.jpg";
+
             } else if (noticiaPredefinida === 5){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = "Tottenham vence Arsenal no clássico";
@@ -3037,6 +3044,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "El Tottenham Hotspur ha guanyat de l'Arsenal al clàssic del nord de Londres. L'entrenador del Tottenham està molt content amb l'actuació dels seus jugadors. A l'entrevista post-partit, ha dit: 'El nostre equip ha jugat molt bé de l'inici al fi, els nostres jugadors s'han esforçat al màxim i això ens ha fet guanyar per 2 a 0.' Encara a les entrevistes post-partit, el jugador de l'Arsenal, Declan Rice, ha dit que l'Arsenal no ha aconseguit crear suficients opurtunitats per marcar un gol contra el Tottenham i això ha fet que l'equip perdi. Amb aquesta victòria, el Tottenham salva la mala temporada de l'equip amb aquesta victòria al clàssic. S'espera més de l'equip a l'any vinent, i aquest resultat també dificulta molt la lluita de l'Arsenal pel títol de la Premier League contra el Liverpool, que ara té un gran avantatge a la primera posició del campionat.";
                 }
                 document.getElementById("img1").src="img/totxars.jpg";
+
             } else if (noticiaPredefinida === 6){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = "Liverpool é campeão da Premier League";
@@ -3046,6 +3054,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "El Liverpool FC, és el campió de la Premier League 2024/25! Ha sigut un dels millors campionats de la història del club a la primera temporada de l'entrenador nou. En una entrevist, el jugador Mohammed Salah ha dit: 'Estic molt emocionat per haver guanyat la Premier League amb el Liverpool un altre cop. Espero repetir aixó l'any vinent.' La Premier League és considerada per molts el millor campionat de futbol del món, doncs, els jugadors, la direcció i  l'entrenador del Liverpool FC han d'estar molt orgullosos del que han fet aquest any, després de tres títols seguits del Manchester City.";
                 }
                 document.getElementById("img1").src="img/liverpoolvencepremier.jpg";
+
             } else if (noticiaPredefinida === 7){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = equipe + " contrata " + nome;
@@ -3055,6 +3064,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "Un fitxatge bombástic ha sigut anunciat: " + nome + " jugarà al " + equipe + " a les pròximes dues temporades. Els aficionats de l'equip estan molt feliços amb l'arribada del nou jugador, que va jugar en un bon nivell als últims dos anys. Amb l'arribada de " + nome + ", s'espera que el " + equipe + " millori i pugui lluitar pel títol de la Premier League.";
                 }
                 document.getElementById("img1").src="img/chegadaNovoJogador.jpg";
+
             } else if (noticiaPredefinida === 8){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = equipe + " vence " + ultimoAdversario;
@@ -3064,6 +3074,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "El " + equipe + " ha guanyat del " + ultimoAdversario + " per " + golsEquipe + " a " + golsRival + ". L'entrenador del " + ultimoAdversario + " ha dit que no està content amb com el seu equip ha jugat i ha de mirar què ha passat perquè l'equip ha tingut problemes tàctics. Aquests problemes tàctics del " + ultimoAdversario + " eren evidents durant el partit, això ha donat la victòria al " + equipe + ". Amb aquest resultat, el " + equipe + " queda a la " + posCampeonato + "ª posició del campionat a la " + campeonatoAtual + ".";
                 }
                 document.getElementById("img1").src="img/ImagemJogadores1.jpg";
+
             } else if (noticiaPredefinida === 9){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = equipe + " x " + ultimoAdversario + " acaba em empate";
@@ -3073,6 +3084,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "El partit entre " + equipe + " i " + ultimoAdversario + " ha acabat empatat en " + golsEquipe + " a " + golsRival + " i cap dels dos equips ha aconseguit la victòria. Ha sigut un partit dur, on cap equip en cap moment semblava superior a l'altre. Amb aquest resultat, el " + equipe + " queda amb la " + posCampeonato + "ª posició al campioinat. Un empat no és un resultat dolent, però l'equip no es pot permetre empatar molt, perquè d'aquesta manera podrien arribar a perdre molts punts importants a la " + campeonatoAtual + ".";
                 }
                 document.getElementById("img1").src="img/ImagemJogadores3.jpg";
+
             } else if (noticiaPredefinida === 10){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = ultimoAdversario + " vence " + equipe;
@@ -3082,6 +3094,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "El " + ultimoAdversario + " ha guanyat del " + equipe + " per " + golsRival + " a " + golsEquipe + ". L'entrenador del " + ultimoAdversario + " ha dit que està molt content amb els seus jugadors, i que han de seguir aixó per aconseguir el resultat que l'equip espera assolir a la classificació final de la " + campeonatoAtual + ". Amb aquest resultat, el " + equipe + " queda a la " + posCampeonato + "ª posició del campionat a la " + campeonatoAtual + ".";
                 }
                 document.getElementById("img1").src="img/ImagemJogadores2.jpg";
+
             } else if (noticiaPredefinida === 11){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " discute com torcedores nas redes sociais";
@@ -3091,6 +3104,7 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "Després d'una seqüència de resultats a baix del que s'esperava, " + nome + " ha contestat les crítiques de l'afició a les xarxes socials. La situació ha generat molta discussió entre els fans i ha augmentat la pressió sobre el jugador.";
                 }
                 document.getElementById("img1").src = "img/jogadorRedesSoc.jpg";
+
             } else if (noticiaPredefinida === 12){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = nome + " causa polêmica em entrevista";
@@ -3100,6 +3114,17 @@ function tocarMusica() {
                     document.getElementById("p1").textContent = "Durant una entrevista, " + nome + " ha contestat de forma mal educada una pregunta sobre el seu rendiment recent al " + equipe + ". Molta gent ha interpretat això com una crítica indirecta a l'entrenador. La direcció del " + equipe + " encara no ha dit res al respecte, però està clar que hi ha tensió en el club.";
                 }
                 document.getElementById("img1").src = "img/polemicaEntrev.jpg";
+
+            }  else if (noticiaPredefinida === 13){
+                if (idioma === "pt-Br"){
+                    document.getElementById("H25").textContent = "HOT NEWS: treinador do Aston Villa espera contratar " + nome + "na próxima janela de transferências." ;
+                    document.getElementById("p1").textContent = "O treinador do Aston Villa deu uma entrevista dizendo: " + nome + " é um jogador muito talentoso. Gostaríamos muito de tê-lo na nossa equipe e é o que vamos nos esforçar para fazer na próxima janela de transferências."
+                } else if (idioma === "cat"){
+                    document.getElementById("H25").textContent = "HOT NEWS: entrenador de l'Aston Villa espera fitxar " + nome + " quan s'obri el mercat de fitxatges"
+                    document.getElementById("p1").textContent = "L'entrenador de l'Aston Villa ha fet una entrevista dient: " + nome + " és un jugador molt talentòs. Ens agradaria molt tenir-lo al nostre equip i això és el nostre objectiu del proper mercat de fitxatges."
+                }
+                document.getElementById("img1").src="img/treinadorEntrevista";
+
             }
         }
     </script>
@@ -3128,6 +3153,9 @@ function tocarMusica() {
         <hr>
         <div id="D90" class="aviso" style="display: none;">
             <h1 id="H1T1" style="color: greenyellow;">VOCÊ PODE VER SUAS ESTATÍSTICAS CLICANDO NO BOTÃO DE ESTATÍSTICAS</h1>
+        </div>
+        <div id="D91" class="aviso" style="display: none;">
+            <h1 id="H1T2" style="color: greenyellow;">É RECOMENDADO SEMPRE TREINAR SUAS HABILIDADES QUANDO TIVER 90% DE ENERGIA OU MAIS FALTANDO MAIS DE UM DIA PARA O PRÓXIMO JOGO</h1>
         </div>
         <div class="botoes-menu">
             <button id="BMT1" onclick="avancarDia(); atualizarMenu()">Avançar</button>
@@ -3196,6 +3224,12 @@ function tocarMusica() {
                 document.getElementById("D5").style.display="block";
             }
 
+            if (dia === 85 && ano === 2025) {
+                tutorial2feito ++;
+                document.getElementById("D91").style.display="block";
+                document.getElementById("BMT2").style.backgroundColor="green";
+            }
+
             if (relTorcida < 30 && forma < 30){
                 noticiaPredefinida = 11;
             }
@@ -3216,7 +3250,7 @@ function tocarMusica() {
 
             if (diasProxJogo === 0){
 
-                if (produtos.p0011 === 0){
+                if (produtos.p0011 === 0 && produtos.p0012 === 0){
                     document.getElementById("D87").style.display="block";
                     document.getElementById("menu").style.display="none";
                     dia --;
@@ -3539,6 +3573,15 @@ function tocarMusica() {
             document.getElementById("habVelocidadeLabel").textContent = "Velocitat: " + habVelocidade;
             document.getElementById("habForcaLabel").textContent = "Força: " + habForca;
             document.getElementById("L17").style.display="none";
+            }
+
+            if (tutorial2feito === 1){
+                tutorial2feito ++;
+            }
+
+            if (tutorial2feito === 2){
+                document.getElementById("BMT2").style.backgroundColor="#222";
+                document.getElementById("D91").style.display="none";
             }
         }
 
@@ -4970,6 +5013,12 @@ function tocarMusica() {
                 document.getElementById("V0011").style.display="none";
             }
 
+            if (produtos.p0012 > 0){
+                document.getElementById("V0012").style.display="block";
+            } else {
+                document.getElementById("V0012").style.display="none";
+            }
+
             if (produtos.p0021 > 0){
                 document.getElementById("V0021").style.display="block";
             } else {
@@ -5043,6 +5092,12 @@ function tocarMusica() {
                 document.getElementById("P0011").style.display="none";
             } else {
                 document.getElementById("P0011").style.display="block";
+            }
+
+            if (produtos.p0012 > 0){
+                document.getElementById("P0012").style.display="none";
+            } else {
+                document.getElementById("P0012").style.display="block";
             }
         }
 
@@ -5160,6 +5215,12 @@ function tocarMusica() {
                 <label>70,00€</label>
                 <button id="BT52" onclick="comprar0011()">Comprar</button>
             </div>
+            <div id="P0012" class="produto">
+                <label id="LT356">Agigas Fredetor Elait</label>
+                <img src="img/Products/1/Agigas Fredetor Elait.jpg">
+                <label>70,00€</label>
+                <button id="BT52" onclick="comprar0012()">Comprar</button>
+            </div>
         </div>
         <div id="D21" style="display: none; flex-direction: column; align-items: center;">
             <label id="LT211">Veículos</label>
@@ -5252,6 +5313,22 @@ function tocarMusica() {
                 }
                 produtos.p0011++;
                 document.getElementById("P0011").style.display="none";
+            }
+        }
+
+        function comprar0012(){
+            if (dinheiro < 70){
+                document.getElementById("D20").style.display="block";
+                document.getElementById("D19").style.display="none";
+            } else {
+                dinheiro -= 70;
+                if (idioma === "pt-Br"){
+                    document.getElementById("L15").textContent="Dinheiro: " + dinheiro + " €";
+                } else if (idioma === "cat"){
+                    document.getElementById("L15").textContent="Diners: " + dinheiro + " €";
+                }
+                produtos.p0012++;
+                document.getElementById("P0012").style.display="none";
             }
         }
 
@@ -5409,6 +5486,15 @@ function tocarMusica() {
             <img src="img/Products/1/Nayk Nerkurriel Megafly 10.jpg">
             <button id="BT65" onclick="vender0011()">Vender</button><br>
             <button id="BT66" onclick="usar0011_1()">Dar para companheiro</button>
+            <div class="close"></div>
+        </div>
+
+        <div class="produto" id="V0012" style="display: none;">
+            <div class="close"></div>
+            <label id="LT357">Agigas Fredetor Elait</label>
+            <img src="img/Products/1/Agigas Fredetor Elait.jpg">
+            <button id="BT138" onclick="vender0012()">Vender</button><br>
+            <button id="BT139" onclick="usar0012_1()">Dar para companheiro</button>
             <div class="close"></div>
         </div>
 
@@ -5680,8 +5766,21 @@ function tocarMusica() {
             irParaVida();
         }
 
+        function vender0012(){
+            produtos.p0012 --;
+            dinheiro += 55;
+            irParaVida();
+        }
+
         function usar0011_1(){
             produtos.p0011--;
+            relCompanheiros +=2;
+            document.getElementById("D35").style.display="block";
+            document.getElementById("D25").style.display="none";
+        }
+
+        function usar0012_1(){
+            produtos.p0012--;
             relCompanheiros +=2;
             document.getElementById("D35").style.display="block";
             document.getElementById("D25").style.display="none";
@@ -6325,7 +6424,11 @@ function tocarMusica() {
         }
 
         function chanceComida(){
-            dinheiro = dinheiro - despesas.comida - despesas.comissaoBancaria - despesas.dadosMoveis - despesas.impostoDeRenda - despesas.transporte - despesas.aluguelApartamento;
+            dinheiro = dinheiro - despesas.comida - despesas.comissaoBancaria - despesas.dadosMoveis - despesas.impostoDeRenda - despesas.transporte;
+
+            if (produtos.p0031 === 0 && produtos.p0032 === 0){
+                dinheiro = dinheiro - despesas.aluguelApartamento
+            }
 
             if (despesas.comida === 200){
                 let chance = Math.random();
@@ -7442,6 +7545,7 @@ function tocarMusica() {
                 document.getElementById("H2T12").textContent = "Objetivos:"
 
                 document.getElementById("H1T1").textContent = "VOCÊ PODE VER SUAS ESTATÍSTICAS CLICANDO NO BOTÃO DE ESTATÍSTICAS"
+                document.getElementById("H1T2").textContent = "É RECOMENDADO SEMPRE TREINAR SUAS HABILIDADES QUANDO TIVER 90% DE ENERGIA OU MAIS FALTANDO MAIS DE UM DIA PARA O PRÓXIMO JOGO"
 
                 document.getElementById("BT1").textContent = "Modo carreira"
                 document.getElementById("BT2").textContent = "Campeonatos"
@@ -7581,6 +7685,8 @@ function tocarMusica() {
                 document.getElementById("BT135").textContent = "Voltar"
                 document.getElementById("BT136").textContent = "Voltar"
                 document.getElementById("BT137").textContent = "Voltar"
+                document.getElementById("BT138").textContent = "Vender"
+                document.getElementById("BT139").textContent = "Dar para companheiro"
 
                 document.getElementById("alturaVelocidadeLabel").textContent = "velocidade:"
                 document.getElementById("alturaForcaLabel").textContent = "força:"
@@ -8022,6 +8128,7 @@ function tocarMusica() {
                 document.getElementById("H2T12").textContent = "Objectius:"
 
                 document.getElementById("H1T1").textContent = "POTS VEURE LES TEVES ESTADÍSTIQUES CLICANT EL BOTÓ D'ESTADÍSTIQUES"
+                document.getElementById("H1T2").textContent = "SEMPRE ES RECOMANA ENTRENAR LES HABILITATS QUAN TINGUIS 90% D'ENERGIA O MÉS SENSE QUE HI HAGI PARTIT EL DIA SEGÜENT"
 
                 document.getElementById("BT1").textContent = "Mode carrera"
                 document.getElementById("BT2").textContent = "Campionats"
@@ -8161,6 +8268,8 @@ function tocarMusica() {
                 document.getElementById("BT135").textContent = "Tornar"
                 document.getElementById("BT136").textContent = "Tornar"
                 document.getElementById("BT137").textContent = "Tornar"
+                document.getElementById("BT138").textContent = "Vendre"
+                document.getElementById("BT139").textContent = "Regalar al company"
 
                 document.getElementById("BO1").textContent = "Resgatar recompensa"
                 document.getElementById("BO2").textContent = "Resgatar recompensa"

@@ -417,16 +417,6 @@
             }
 
         </style>
-        <script>
-
-            window.addEventListener("DOMContentLoaded", () => {
-                const botao = document.getElementById("BT1");
-                if (botao) {
-                botao.addEventListener("click", tocarMusica);
-                }
-            });
-
-        </script>
     </head>
 
     <audio id="soundtrack"></audio>
@@ -512,6 +502,8 @@
             p0041: 0,
             p0042: 0,
             p0043: 0,
+            p0051: 0,
+            p0052: 0,
         }
 
         let agentes = {
@@ -735,34 +727,9 @@
         { nome: "West Bromwich", força: 68, estádio: "The Hawthorns" }
       ];
 
-    audio = document.getElementById("soundtrack");
-
-    window.addEventListener("DOMContentLoaded", () => {
-    const audio = document.getElementById("soundtrack");
-
-    if (audio) {
-        audio.addEventListener("ended", function() {
-            tocarMusica();
-        });
-    }
-});
-
-function tocarMusica() {
-    const playlist = [];
-    for (let i = 1; i <= 10; i++) {
-        playlist.push(`ST${i}.mp3`);
-    }
-
-    const audio = document.getElementById("soundtrack");
-    const aleatorio = Math.floor(Math.random() * playlist.length);
-    audio.src = playlist[aleatorio];
-    audio.play();
-}
-
-
     </script>
 
-    <div class="telaInicial" id="D86" onclick="tocarMusica(); document.getElementById('D63').style.display='flex'; document.getElementById('D86').style.display='none'" style="display: none;">
+    <div class="telaInicial" id="D86" onclick="document.getElementById('D63').style.display='flex'; document.getElementById('D86').style.display='none'" style="display: none;">
         <img src="img/Capa.jpg">
         <label id="LT353">Click to start</label>
     </div>
@@ -2025,10 +1992,13 @@ function tocarMusica() {
         function ataque3cruzar(){
             document.getElementById("D78").style.display= "none";
             let chance = Math.random();
+            chance = Math.random();
             let chance2 = habPasse / 150;
+            chance2 = habPasse / 150;
 
             if (chance2 > chance){
                 let chance3 = Math.random();
+                chance3 = Math.random();
                 if ((forcaEquipe + 15 - forcaRival) / 100 > chance3 / 4){
                     document.getElementById("D78a").style.display= "block";
                     golsEquipe++;
@@ -2552,6 +2522,17 @@ function tocarMusica() {
             } else if (idioma === "cat"){
                 document.getElementById("salarioLabel").textContent = salario + " €/setmana";
             }
+
+            const jogoAtual = calendarioEquipe.find(jogo => jogo.rodada === rodada);
+
+            if (jogoAtual) {
+                diasProxJogo = jogoAtual.data - dia;
+                proxAdversario = jogoAtual.adversario;
+            } else {
+                diasProxJogo = "-";
+                proxAdversario = "-";
+            }
+
             document.getElementById("diasProxJogoLabel").textContent = diasProxJogo;
             document.getElementById("proxJogoLabel").textContent = proxAdversario;
             document.getElementById("nomeCampLabel").textContent = campeonatoAtual;
@@ -3118,14 +3099,23 @@ function tocarMusica() {
             }  else if (noticiaPredefinida === 13){
                 if (idioma === "pt-Br"){
                     document.getElementById("H25").textContent = "HOT NEWS: treinador do Aston Villa espera contratar " + nome + "na próxima janela de transferências." ;
-                    document.getElementById("p1").textContent = "O treinador do Aston Villa deu uma entrevista dizendo: " + nome + " é um jogador muito talentoso. Gostaríamos muito de tê-lo na nossa equipe e é o que vamos nos esforçar para fazer na próxima janela de transferências."
+                    document.getElementById("p1").textContent = "O treinador do Aston Villa deu uma entrevista dizendo: " + nome + " é um jogador muito talentoso. Gostaríamos muito de tê-lo na nossa equipe e é o que vamos nos esforçar para fazer na próxima janela de transferências.";
                 } else if (idioma === "cat"){
-                    document.getElementById("H25").textContent = "HOT NEWS: entrenador de l'Aston Villa espera fitxar " + nome + " quan s'obri el mercat de fitxatges"
-                    document.getElementById("p1").textContent = "L'entrenador de l'Aston Villa ha fet una entrevista dient: " + nome + " és un jugador molt talentòs. Ens agradaria molt tenir-lo al nostre equip i això és el nostre objectiu del proper mercat de fitxatges."
+                    document.getElementById("H25").textContent = "HOT NEWS: entrenador de l'Aston Villa espera fitxar " + nome + " quan s'obri el mercat de fitxatges";
+                    document.getElementById("p1").textContent = "L'entrenador de l'Aston Villa ha fet una entrevista dient: " + nome + " és un jugador molt talentòs. Ens agradaria molt tenir-lo al nostre equip i això és el nostre objectiu del proper mercat de fitxatges.";
                 }
-                document.getElementById("img1").src="img/treinadorEntrevista";
+                document.getElementById("img1").src="img/treinadorEntrevista.jpg";
 
-            }
+            } else if (noticiaPredefinida === 14){
+                if (idioma === "pt-Br"){
+                    document.getElementById("H25").textContent = "Polícia multa " + nome + " em 1000€ por ataques de seu cachorro!" ;
+                    document.getElementById("p1").textContent = nome + " estava passeando seu perigoso pitbull na rua, que quis atacar pessoas durante o passeio. A polícia viu o que aconteceu e multou o jogador em 1000€. Segundo o policial, " + nome + " estava pondo vidas em risco ao passear seu animal.";
+                } else if (idioma === "cat"){
+                    document.getElementById("H25").textContent = nome + " multat en 1000€ per atacs del seu gos!";
+                    document.getElementById("p1").textContent = nome + " estava passejant el seu perillòs pitbull al carrer, que ha intentat atacar persones durant el passeig. La policia ha vist lo que estava passant i ha multat el jugador del " + equipe + " en 1000€. Segons la policia, " + nome + " estava posant vides en risc al passejar el seu animal, i per això considera que se li ha de posar una multa.";
+                }
+                document.getElementById("img1").src="img/multaPitBullPerigoso.jpg";
+                }
         }
     </script>
 
@@ -3814,6 +3804,8 @@ function tocarMusica() {
             document.getElementById("D84").style.display="none";
             document.getElementById("D87").style.display="none";
             document.getElementById("D88").style.display="none";
+            document.getElementById("D93").style.display="none";
+            document.getElementById("D94").style.display="none";
             atualizarObjetivos();
             arrendondarVariaveis();
             atualizarMenu();
@@ -4647,7 +4639,7 @@ function tocarMusica() {
 
             <div class="decisao" id="D78" style="display: none;">
                 <div class="close"></div>
-                <label id="L18" class="pergunta">Você recebeu um passe em velocidade perto da linha de fundo.</label>
+                <label id="L18B" class="pergunta">Você recebeu um passe em velocidade perto da linha de fundo.</label>
                 <div class="resposta">
                     <button id="B11" class="escolherResposta" onclick="ataque3cruzar()">Cruzar</button>
                     <button id="B12" class="escolherResposta" onclick="ataque3passar()">Passar para o companheiro de trás</button>
@@ -5072,6 +5064,18 @@ function tocarMusica() {
             } else {
                 document.getElementById("V0043").style.display="none";
             }
+
+            if (produtos.p0051 > 0){
+                document.getElementById("V0051").style.display="block";
+            } else {
+                document.getElementById("V0051").style.display="none";
+            }
+
+            if (produtos.p0052 > 0){
+                document.getElementById("V0052").style.display="block";
+            } else {
+                document.getElementById("V0052").style.display="none";
+            }
         }
 
         function irParaLoja(){
@@ -5168,6 +5172,35 @@ function tocarMusica() {
             } else {
                 document.getElementById("P0043").style.display="block";
             }
+
+            if (produtos.p0051 > 0){
+                document.getElementById("P0051").style.display="none";
+            } else {
+                document.getElementById("P0051").style.display="block";
+            }
+
+            if (produtos.p0052 > 0){
+                document.getElementById("P0052").style.display="none";
+            } else {
+                document.getElementById("P0052").style.display="block";
+            }
+        }
+
+        function verAnimais(){
+            document.getElementById("D92").style.display="flex";
+            document.getElementById("D18").style.display="none";
+
+            if (produtos.p0051 > 0){
+                document.getElementById("P0051").style.display="none";
+            } else {
+                document.getElementById("P0051").style.display="block";
+            }
+
+            if (produtos.p0052 > 0){
+                document.getElementById("P0052").style.display="none";
+            } else {
+                document.getElementById("P0052").style.display="block";
+            }
         }
 
         function fecharProdutos(){
@@ -5176,6 +5209,7 @@ function tocarMusica() {
             document.getElementById("D21").style.display="none";
             document.getElementById("D22").style.display="none";
             document.getElementById("D41").style.display="none";
+            document.getElementById("D92").style.display="none";
         }
 
         function fecharAvisoFaltaDeDinheiro(){
@@ -5194,8 +5228,11 @@ function tocarMusica() {
             <button id="BT48" onclick="verVeiculos()">Veículos</button><br>
             <button id="BT49" onclick="verCasas()">Casas</button><br>
             <button id="BT50" onclick="verDispositivosEletronicos()">Dispositivos eletrônicos</button>
+            <button id="BT147" onclick="verAnimais()">Animais</button>
+
             <div class="close"></div>
         </div>
+
         <div id="D20" class="aviso" style="display: none;">
             <div class="close"></div>
             <label id="LT208">Você não tem dinheiro para comprar esse produto.</label>
@@ -5203,6 +5240,7 @@ function tocarMusica() {
             <button onclick="fecharAvisoFaltaDeDinheiro()">Ok</button>
             <div class="close"></div>
         </div>
+
         <div id="D19" style="display: none; flex-direction: column; align-items: center;">
             <label id="LT209">Chuteiras</label>
             <div class="close"></div>
@@ -5222,6 +5260,7 @@ function tocarMusica() {
                 <button id="BT52" onclick="comprar0012()">Comprar</button>
             </div>
         </div>
+
         <div id="D21" style="display: none; flex-direction: column; align-items: center;">
             <label id="LT211">Veículos</label>
             <div class="close"></div>
@@ -5253,6 +5292,7 @@ function tocarMusica() {
                 <button id="BT57" onclick="comprar0024()">Comprar</button>
             </div>
         </div>
+
         <div id="D22" style="display: none; flex-direction: column; align-items: center;">
             <label id="LT216">Casas</label>
             <div class="close"></div>
@@ -5272,6 +5312,7 @@ function tocarMusica() {
                 <button id="BT60" onclick="comprar0032()">Comprar</button>
             </div>
         </div>
+
         <div id="D41" style="display: none; flex-direction: column; align-items: center;">
             <label id="LT218">Dispositivos eletrônicos</label>
             <div class="close"></div>
@@ -5295,6 +5336,26 @@ function tocarMusica() {
                 <img src="img/Products/4/PC Dhall Latud 5400.jpg">
                 <label>237,00€</label>
                 <button id="BT64" onclick="comprar0043()">Comprar</button>
+            </div>
+        </div>
+
+        <div id="D92" style="display: none; flex-direction: column; align-items: center;">
+            <label id="LT358">Animais</label>
+            <div class="close"></div>
+            <button id="BT140" onclick="fecharProdutos()">Voltar</button>
+            <div class="close"></div>
+            <br>
+            <div id="P0051" class="produto">
+                <label id="LT359">Chihuahua</label>
+                <img src="img/Products/5/Chihuahua.jpg">
+                <label>1.000,00€</label>
+                <button id="BT141" onclick="comprar0051()">Comprar</button>
+            </div>
+            <div id="P0052" class="produto">
+                <label id="LT360">Pit Bull</label>
+                <img src="img/Products/5/pitBull.jpg">
+                <label>1.000,00€</label>
+                <button id="BT142" onclick="comprar0052()">Comprar</button>
             </div>
         </div>
     </div>
@@ -5335,7 +5396,7 @@ function tocarMusica() {
         function comprar0021(){
             if (dinheiro < 25873){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D21").style.display="none";
             } else {
                 dinheiro -= 25873;
                 if (idioma === "pt-Br"){
@@ -5351,7 +5412,7 @@ function tocarMusica() {
         function comprar0022(){
             if (dinheiro < 260){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D21").style.display="none";
             } else {
                 dinheiro -= 260;
                 if (idioma === "pt-Br"){
@@ -5367,7 +5428,7 @@ function tocarMusica() {
         function comprar0023(){
             if (dinheiro < 5000){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D21").style.display="none";
             } else {
                 dinheiro -= 5000;
                 if (idioma === "pt-Br"){
@@ -5383,7 +5444,7 @@ function tocarMusica() {
         function comprar0024(){
             if (dinheiro < 1000000){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D21").style.display="none";
             } else {
                 dinheiro -= 1000000;
                 if (idioma === "pt-Br"){
@@ -5399,7 +5460,7 @@ function tocarMusica() {
         function comprar0031(){
             if (dinheiro < 62580){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D22").style.display="none";
             } else {
                 dinheiro -= 62580;
                 if (idioma === "pt-Br"){
@@ -5415,7 +5476,7 @@ function tocarMusica() {
         function comprar0032(){
             if (dinheiro < 2000000){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D22").style.display="none";
             } else {
                 dinheiro -= 2000000;
                 if (idioma === "pt-Br"){
@@ -5431,7 +5492,7 @@ function tocarMusica() {
         function comprar0041(){
             if (dinheiro < 260){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D41").style.display="none";
             } else {
                 dinheiro -= 260;
                 if (idioma === "pt-Br"){
@@ -5447,7 +5508,7 @@ function tocarMusica() {
         function comprar0042(){
             if (dinheiro < 1120){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D41").style.display="none";
             } else {
                 dinheiro -= 1120;
                 if (idioma === "pt-Br"){
@@ -5463,7 +5524,7 @@ function tocarMusica() {
         function comprar0043(){
             if (dinheiro < 237){
                 document.getElementById("D20").style.display="block";
-                document.getElementById("D19").style.display="none";
+                document.getElementById("D41").style.display="none";
             } else {
                 dinheiro -= 237;
                 if (idioma === "pt-Br"){
@@ -5473,6 +5534,38 @@ function tocarMusica() {
                 }
                 produtos.p0043++;
                 document.getElementById("P0043").style.display="none";
+            }
+        }
+
+        function comprar0051(){
+            if (dinheiro < 1000){
+                document.getElementById("D20").style.display="block";
+                document.getElementById("D92").style.display="none";
+            } else {
+                dinheiro -= 1000;
+                if (idioma === "pt-Br"){
+                    document.getElementById("L15").textContent="Dinheiro: " + dinheiro + " €";
+                } else if (idioma === "cat"){
+                    document.getElementById("L15").textContent="Diners: " + dinheiro + " €";
+                }
+                produtos.p0051++;
+                document.getElementById("P0051").style.display="none";
+            }
+        }
+
+        function comprar0052(){
+            if (dinheiro < 1000){
+                document.getElementById("D20").style.display="block";
+                document.getElementById("D92").style.display="none";
+            } else {
+                dinheiro -= 62580;
+                if (idioma === "pt-Br"){
+                    document.getElementById("L15").textContent="Dinheiro: " + dinheiro + " €";
+                } else if (idioma === "cat"){
+                    document.getElementById("L15").textContent="Diners: " + dinheiro + " €";
+                }
+                produtos.p0052++;
+                document.getElementById("P0052").style.display="none";
             }
         }
     </script>
@@ -5506,6 +5599,7 @@ function tocarMusica() {
             <button id="BT68" onclick="vender0022()">Vender</button>
             <div class="close"></div>
         </div>
+
         <div class="produto" id="V0021" style="display: none;">
             <div class="close"></div>
             <label id="LT224">Chevrorillo Street 2008</label>
@@ -5515,6 +5609,7 @@ function tocarMusica() {
             <button id="BT71" onclick="usar0021_2()">Trabalhar de Uber</button>
             <div class="close"></div>
         </div>
+        
         <div class="produto" id="V0023" style="display: none;">
             <div class="close"></div>
             <label id="LT225">Kart Italia Modelo Gara 2020</label>
@@ -5525,6 +5620,7 @@ function tocarMusica() {
             <button id="BT75" onclick="usar0023_3()">Competir contra companheiros</button>
             <div class="close"></div>
         </div>
+
         <div class="produto" id="V0024" style="display: none;">
             <div class="close"></div>
             <label id="LT226">Ñerari LaÑerari 2013</label>
@@ -5561,6 +5657,7 @@ function tocarMusica() {
             <button id="BT83" onclick="usar0041_2()">Provocar rival por Instagram</button>
             <div class="close"></div>
         </div>
+
         <div class="produto" id="V0042" style="display: none;">
             <div class="close"></div>
             <label id="LT230">AiFon 16 Promekz</label>
@@ -5570,11 +5667,28 @@ function tocarMusica() {
             <button id="BT86" onclick="usar0042_2()">Provocar rival por Instagram</button>
             <div class="close"></div>
         </div>
+
         <div class="produto" id="V0043" style="display: none;">
             <div class="close"></div>
             <label id="LT231">PC Dhall Latud 5400</label>
             <img src="img/Products/4/PC Dhall Latud 5400.jpg">
             <button id="BT87" onclick="vender0043()">Vender</button>
+            <div class="close"></div>
+        </div>
+
+        <div class="produto" id="V0051" style="display: none;">
+            <div class="close"></div>
+            <label id="LT361">Chihuahua</label>
+            <img src="img/Products/5/Chihuahua.jpg">
+            <button id="BT143" onclick="usar0051_1()">Passear com o cachorro</button>
+            <div class="close"></div>
+        </div>
+
+        <div class="produto" id="V0052" style="display: none;">
+            <div class="close"></div>
+            <label id="LT362">Pit Bull</label>
+            <img src="img/Products/5/pitBull.jpg">
+            <button id="BT144" onclick="usar0052_1()">Passear com o cachorro</button>
             <div class="close"></div>
         </div>
     </div>
@@ -5757,6 +5871,27 @@ function tocarMusica() {
         <button id="BT91" class="escolherResposta" onclick="alugarp0031()">Aceitar</button><br>
         <button id="BT92" class="escolherResposta" onclick="irParaMenu()">Rejeitar</button><br>
         <button id="BT93" class="escolherResposta" onclick="p0031naoAlugar()">Remover oferta de aluguel</button>
+    </div>
+
+    <div id="D93" class="aviso" style="display: none;">
+        <div class="close"></div>
+        <label id="LT363">Você passeou com seu cachorro. As pessoas gostaram de ver.</label>
+        <div class="infoStats">
+            <label id="LT364">Relação com a torcida +1</label><br>
+            <label id="LT365">Energia -5</label>
+        </div>
+        <button id="BT145" onclick="irParaMenu()">Ok</button>
+    </div>
+
+    <div id="D94" class="aviso" style="display: none;">
+        <div class="close"></div>
+        <label id="LT366">Seu pitbull estava agressivo durante o passeio e tentou atacar pessoas. A polícia te multou em 1000€ por isso.</label>
+        <div class="infoStats">
+            <label id="LT367">Relação com a torcida -2</label><br>
+            <label id="LT368">Energia -5</label><br>
+            <label id="LT369">Dinheiro -1000</label>
+        </div>
+        <button id="BT146" onclick="irParaMenu()">Ok</button>
     </div>
 
     <script>
@@ -5978,6 +6113,35 @@ function tocarMusica() {
             produtos.p0043 --;
             dinheiro +=185;
             irParaVida();
+        }
+
+        function usar0051_1(){
+            document.getElementById("D93").style.display="block";
+            document.getElementById("D25").style.display="none";
+            energia -=5,
+            relTorcida ++;
+        }
+
+        function usar0052_1(){
+
+            let chance0052;
+
+            chance0052 = Math.random();
+
+            if (chance0052 < 0.8){
+                document.getElementById("D93").style.display="block";
+                document.getElementById("D25").style.display="none";
+                energia -=5;
+                relTorcida + 1;
+            } else {
+                document.getElementById("D94").style.display="block";
+                document.getElementById("D25").style.display="none";
+                energia -=5,
+                relTorcida -=2;
+                dinheiro -=1000;
+                noticiaPredefinida = 14;
+                gerarNoticia();
+            }
         }
     </script>
 
@@ -6398,14 +6562,14 @@ function tocarMusica() {
                 document.getElementById("L29").textContent = "Imposto de renda: " + despesas.impostoDeRenda + " €";
                 document.getElementById("L31").textContent = "Comissões bancárias: " + despesas.comissaoBancaria + " €";
                 document.getElementById("L32").textContent = "Dados móveis: " + despesas.dadosMoveis + " €";
-                document.getElementById("L32").textContent = "Aluguel do apartamento: " + despesas.aluguelApartamento + " €";
+                document.getElementById("L40").textContent = "Aluguel do apartamento: " + despesas.aluguelApartamento + " €";
             } else if (idioma === "cat"){
                 document.getElementById("L27").textContent = "Menjar: " + despesas.comida + " €";
                 document.getElementById("L28").textContent = "Transport: " + despesas.transporte + " €";
                 document.getElementById("L29").textContent = "Impost sobre la renda: " + despesas.impostoDeRenda + " €";
                 document.getElementById("L31").textContent = "Comissions bancàries: " + despesas.comissaoBancaria + " €";
                 document.getElementById("L32").textContent = "Datos: " + despesas.dadosMoveis + " €";
-                document.getElementById("L32").textContent = "Lloguer pis: " + despesas.aluguelApartamento + " €";
+                document.getElementById("L40").textContent = "Lloguer pis: " + despesas.aluguelApartamento + " €";
             }
         }
 
@@ -6465,6 +6629,7 @@ function tocarMusica() {
         <label id="L32">Dados móveis</label><br>
         <label id="L31">Comissão Bancária </label><br>
         <label id="L29">Imposto de renda: </label><br>
+        <label id="L40">Aluguel apartamento</label><br>
         <div class="close"></div>
         <button onclick="chanceComida()">Ok</button>
         <div class="close"></div>
@@ -7144,6 +7309,7 @@ function tocarMusica() {
                 document.getElementById("L16").textContent = "Você está no banco de reservas devido a falta de energia.";
                 document.getElementById("L17").textContent = "Você não tem energia suficiente para treinar.";
                 document.getElementById("L18").textContent = "Você recebeu um passe em velocidade perto da linha de fundo.";
+                document.getElementById("L18B").textContent = "Escanteio a favor de sua equipe. A bola vem em sua direção.";
                 document.getElementById("L19").textContent = "Você tem contrato com a sua equipe para a próxima temporada.";
                 document.getElementById("L21").textContent = "Sua habilidade é: -- / 100";
                 document.getElementById("L24").textContent = "Seu contrato com a equipe acabou. As seis maiores equipes estão interessadas.";
@@ -7530,6 +7696,20 @@ function tocarMusica() {
                 document.getElementById("LT353").textContent = "CLIQUE PARA COMEÇAR";
                 document.getElementById("LT354").textContent = "Voltar";
                 document.getElementById("LT355").textContent = "Você não possui uma chuteira. Compre uma na loja para poder jogar!"
+                document.getElementById("LT356").textContent = "Agigas Fredetor Elait";
+                document.getElementById("LT357").textContent = "Agigas Fredetor Elait";
+                document.getElementById("LT358").textContent = "Animais";
+                document.getElementById("LT359").textContent = "Chihuahua";
+                document.getElementById("LT360").textContent = "Pit Bull";
+                document.getElementById("LT361").textContent = "Chihuahua";
+                document.getElementById("LT362").textContent = "Pit Bull";
+                document.getElementById("LT363").textContent = "Você passeou com seu cachorro. As pessoas gostaram de ver.";
+                document.getElementById("LT364").textContent = "Relação com a torcida +1";
+                document.getElementById("LT365").textContent = "Energia -5";
+                document.getElementById("LT366").textContent = "Seu pitbull estava agressivo durante o passeio e tentou atacar pessoas. A polícia te multou em 1000€ por isso.";
+                document.getElementById("LT367").textContent = "Relação com a torcida -2";
+                document.getElementById("LT368").textContent = "Energia -5";
+                document.getElementById("LT369").textContent = "Dinheiro -1000";
 
                 document.getElementById("H2T1").textContent = "Fim de temporada"
                 document.getElementById("H2T2").textContent = "Contrato Wolverhampton"
@@ -7687,6 +7867,14 @@ function tocarMusica() {
                 document.getElementById("BT137").textContent = "Voltar"
                 document.getElementById("BT138").textContent = "Vender"
                 document.getElementById("BT139").textContent = "Dar para companheiro"
+                document.getElementById("BT140").textContent = "Voltar"
+                document.getElementById("BT141").textContent = "Comprar"
+                document.getElementById("BT142").textContent = "Comprar"
+                document.getElementById("BT143").textContent = "Passear com o cachorro"
+                document.getElementById("BT144").textContent = "Passear com o cachorro"
+                document.getElementById("BT145").textContent = "Ok"
+                document.getElementById("BT146").textContent = "Ok"
+                document.getElementById("BT147").textContent = "Animais"
 
                 document.getElementById("alturaVelocidadeLabel").textContent = "velocidade:"
                 document.getElementById("alturaForcaLabel").textContent = "força:"
@@ -7727,6 +7915,7 @@ function tocarMusica() {
                 document.getElementById("L16").textContent = "Ets suplent en aquest partit per falta d'energia.";
                 document.getElementById("L17").textContent = "No tens energia suficient per entrenar.";
                 document.getElementById("L18").textContent = "Has rebut una passada en velocitat a prop de la línia de fons.";
+                document.getElementById("L18B").textContent = "Corner a favor del teu equip. La pilota ve en la teva direcció.";
                 document.getElementById("L19").textContent = "Tens contracte amb el teu equip per la temporada vinent.";
                 document.getElementById("L21").textContent = "La teva habilitat és: -- / 100";
                 document.getElementById("L24").textContent = "El teu contracte amb l'equip s'ha caducat. Tens ofertes dels sis millors equips.";
@@ -7948,7 +8137,7 @@ function tocarMusica() {
                 document.getElementById("LT189").textContent = "Relació amb l'entrenador +3";
                 document.getElementById("LT190").textContent = "Relació amb els companys +2";
                 document.getElementById("LT191").textContent = "Vas caminant pel carrer i veus un grup de nens petits jugant futbol. Un d'ells està amb la samarreta del teu equip.";
-                document.getElementById("LT192").textContent = "El jove aficcionat està content!";
+                document.getElementById("LT192").textContent = "El jove aficionat està content!";
                 document.getElementById("LT193").textContent = "Relació amb els aficionats +1";
                 document.getElementById("LT194").textContent = "Els joves aficionats estan contents!";
                 document.getElementById("LT195").textContent = "Relació amb els aficionats +2";
@@ -8113,6 +8302,20 @@ function tocarMusica() {
                 document.getElementById("LT353").textContent = "CLICA PER COMENÇAR";
                 document.getElementById("LT354").textContent = "Tornar";
                 document.getElementById("LT355").textContent = "No tens botes de futbol per jugar! Compra'n una per poder seguir."
+                document.getElementById("LT356").textContent = "Agigas Fredetor Elait";
+                document.getElementById("LT357").textContent = "Agigas Fredetor Elait";
+                document.getElementById("LT358").textContent = "Animals";
+                document.getElementById("LT359").textContent = "Chihuahua";
+                document.getElementById("LT360").textContent = "Pit Bull";
+                document.getElementById("LT361").textContent = "Chihuahua";
+                document.getElementById("LT362").textContent = "Pit Bull";
+                document.getElementById("LT363").textContent = "Has passejat amb el teu gos. Els fans ho han vist.";
+                document.getElementById("LT364").textContent = "Relació amb els aficionats +1";
+                document.getElementById("LT365").textContent = "Energia -5";
+                document.getElementById("LT366").textContent = "El teu pitbull estava agressiu durant el passeig i ha intentat atacar persones. La policia ho ha vist i t'ha posat 1000€ de multa per això.";
+                document.getElementById("LT367").textContent = "Relació amb els aficionats -2";
+                document.getElementById("LT368").textContent = "Energia -5";
+                document.getElementById("LT369").textContent = "Diners -1000";
 
                 document.getElementById("H2T1").textContent = "Fi de temporada"
                 document.getElementById("H2T2").textContent = "Contracte Wolverhampton"
@@ -8270,6 +8473,14 @@ function tocarMusica() {
                 document.getElementById("BT137").textContent = "Tornar"
                 document.getElementById("BT138").textContent = "Vendre"
                 document.getElementById("BT139").textContent = "Regalar al company"
+                document.getElementById("BT140").textContent = "Tornar"
+                document.getElementById("BT141").textContent = "Comprar"
+                document.getElementById("BT142").textContent = "Comprar"
+                document.getElementById("BT143").textContent = "Passejar el gos"
+                document.getElementById("BT144").textContent = "Passejar el gos"
+                document.getElementById("BT145").textContent = "Ok"
+                document.getElementById("BT146").textContent = "Ok"
+                document.getElementById("BT147").textContent = "Animals"
 
                 document.getElementById("BO1").textContent = "Resgatar recompensa"
                 document.getElementById("BO2").textContent = "Resgatar recompensa"

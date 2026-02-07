@@ -478,6 +478,9 @@
         let audio;
         let jogoIniciado = 0;
         let tutorial2feito = 0;
+        let quizTaticasOfensivas = 1.1;
+        let quizTaticasDefensivas = 1.1;
+        let estudouHoje = 0;
         let energiaTreino = {
             defesa: 22,
             ataque: 22,
@@ -518,7 +521,7 @@
             comissaoBancaria: 30,
             impostoDeRenda: 100,
             impostoDePropriedades: 100,
-            aluguelApartamento: 500,
+            aluguelApartamento: 125,
         }
 
         let estatisticasPartida = {
@@ -1803,6 +1806,7 @@
             if (chance < chance2){
                     golsEquipe = golsEquipe + 1;
                     estatisticasPartida.gols ++;
+                    estatisticaGols();
                     atualizarPlacar();
                     relTorcida += 3;
                     relTreinador += 3;
@@ -1825,6 +1829,7 @@
             if (chance < chance2){
                     golsEquipe = golsEquipe + 1;
                     estatisticasPartida.assistencias ++;
+                    estatisticaAssitencias();
                     atualizarPlacar();
                     relTorcida += 1;
                     relTreinador += 1;
@@ -2538,6 +2543,18 @@
             document.getElementById("nomeCampLabel").textContent = campeonatoAtual;
             atualizarPosLiga();
             document.getElementById("posEquipeTabelaLabel").textContent = posCampeonato;
+
+            aplicarAtualizacoes();
+        }
+
+        function aplicarAtualizacoes(){
+
+            if (produtos.p0051 === undefined){
+                produtos.p0051 = 0;
+            }
+            if (produtos.p0052 === undefined){
+                produtos.p0052 = 0;
+            }
         }
 
         function novaTemporada(){
@@ -3147,6 +3164,9 @@
         <div id="D91" class="aviso" style="display: none;">
             <h1 id="H1T2" style="color: greenyellow;">É RECOMENDADO SEMPRE TREINAR SUAS HABILIDADES QUANDO TIVER 90% DE ENERGIA OU MAIS FALTANDO MAIS DE UM DIA PARA O PRÓXIMO JOGO</h1>
         </div>
+        <div id="D95" class="aviso" style="display: none;">
+            <h1 id="H1T3" style="color: greenyellow;">SE VOCÊ COMPRAR UMA CASA, NÃO VAI MAIS PRECISAR PAGAR ALUGUEL DE APARTAMENTO.</h1>
+        </div>
         <div class="botoes-menu">
             <button id="BMT1" onclick="avancarDia(); atualizarMenu()">Avançar</button>
             <button id="BMT2" onclick="verHabilidades()">HABILIDADES</button>
@@ -3176,6 +3196,8 @@
                 dia = 1;
                 ano = ano + 1;
             }
+
+            estudouHoje = 0;
 
             if (dia % 7 === 0) {
                 dinheiro += salario;
@@ -3218,6 +3240,14 @@
                 tutorial2feito ++;
                 document.getElementById("D91").style.display="block";
                 document.getElementById("BMT2").style.backgroundColor="green";
+            }
+
+            if (dia === 92 && ano === 2025) {
+                document.getElementById("D95").style.display="block";
+            }
+
+            if (dia === 93 && ano === 2025) {
+                document.getElementById("D95").style.display="none";
             }
 
             if (relTorcida < 30 && forma < 30){
@@ -3368,12 +3398,17 @@
                 if (!(dia !== 150 && ano !==2025)){
                     if (!(dia !== 1 && ano !==2026)){
 
-                        const chance = Math.random();
-                        const chance2 = chance * 100;
+                        let chance = Math.random();
+                        let chance2 = chance * 100;
+                        chance = Math.random();
+                        chance2 = chance * 100;
 
                         if (chance2 < 1){
                             document.getElementById("menu").style.display="none";
                             document.getElementById("D12").style.display="block";
+                        } else if (chance2 < 2){
+                            document.getElementById("menu").style.display="none";
+                            document.getElementById("D103").style.display="block";
                         }
 
                         if (produtos.p0031aAlugar === 1){
@@ -3555,6 +3590,7 @@
             document.getElementById("habChuteLabel").textContent = "Finalização: " + habChute;
             document.getElementById("habVelocidadeLabel").textContent = "Velocidade: " + habVelocidade;
             document.getElementById("habForcaLabel").textContent = "Força: " + habForca;
+            document.getElementById("habEnergiaLabel").textContent = "Energia: " + energia;
             document.getElementById("L17").style.display="none";
             } else if (idioma === "cat"){
             document.getElementById("habDefesaLabel").textContent = "Defensa: " + habDefesa;
@@ -3562,6 +3598,7 @@
             document.getElementById("habChuteLabel").textContent = "Rematada: " + habChute;
             document.getElementById("habVelocidadeLabel").textContent = "Velocitat: " + habVelocidade;
             document.getElementById("habForcaLabel").textContent = "Força: " + habForca;
+            document.getElementById("habEnergiaLabel").textContent = "Energia: " + energia;
             document.getElementById("L17").style.display="none";
             }
 
@@ -3627,6 +3664,8 @@
         <label id="habVelocidadeLabel">Velocidade:</label>
         <br>
         <label id="habForcaLabel">Força:</label>
+        <br>
+        <label style="color: silver;" id="habEnergiaLabel">Energia:</label>
         <br>
         <label id="L17" style="display: none;">Você não tem energia suficiente para treinar.</label>
         <br>
@@ -3806,6 +3845,18 @@
             document.getElementById("D88").style.display="none";
             document.getElementById("D93").style.display="none";
             document.getElementById("D94").style.display="none";
+            document.getElementById("D96").style.display="none";
+            document.getElementById("D97").style.display="none";
+            document.getElementById("D98").style.display="none";
+            document.getElementById("D99").style.display="none";
+            document.getElementById("D100").style.display="none";
+            document.getElementById("D101").style.display="none";
+            document.getElementById("D102").style.display="none";
+            document.getElementById("D103").style.display="none";
+            document.getElementById("D103a").style.display="none";
+            document.getElementById("D103b").style.display="none";
+            document.getElementById("D104").style.display="none";
+            document.getElementById("D105").style.display="none";
             atualizarObjetivos();
             arrendondarVariaveis();
             atualizarMenu();
@@ -4195,7 +4246,7 @@
                 <button class="okJogo" onclick="voltarAoJogo()">Ok</button>
                 <div class="close"></div>
             </div>
-            <div class="aviso" id="D11e" style="display: none;">
+            <div class="aviso" id="D11error" style="display: none;">
                 <div class="close"></div>
                 <label id="LT62" class="narracao">Ótima assistência! Sua equipe marcou e seus companheiros estão felizes com o passe!</label>
                 <br>
@@ -4854,6 +4905,47 @@
             relTorcida --;
         }
 
+        </script>
+
+        <div class="decisao" id="D103" style="display: none;">
+            <div class="close"></div>
+            <label class="pergunta" id="LT380">O treinador quer jantar com você no restaurante e trocar algumas ideias. O preço vai ser 30€.</label>
+            <div class="resposta">
+                <button id="BT153" class="escolherResposta" onclick="document.getElementById('D103').style.display='none'; document.getElementById('D103b').style.display='block'; dinheiro -=30; relTreinador +=2;">Ir jantar com ele</button>
+                <button id="BT154" class="escolherResposta" onclick="document.getElementById('D103').style.display='none'; document.getElementById('D103a').style.display='block'; relTreinador -=5;">Não ir</button>
+            </div>
+            <div class="close"></div>
+        </div>
+
+        <div class="aviso" id="D103a" style="display: none;">
+            <div class="close"></div>
+            <label id="LT381">O treinador ficou triste por isso.</label>
+            <br>
+            <br>
+            <div class="infoStats">
+                <label id="LT382">Relação com o treinador -5</label>
+            </div>
+            <br>
+            <br>
+            <button onclick="irParaMenu()">Ok</button>
+        </div>
+
+        <div class="aviso" id="D103b" style="display: none;">
+            <div class="close"></div>
+            <label id="LT383">O treinador está contente com a sua presença.</label>
+            <br>
+            <br>
+            <div class="infoStats">
+                <label id="LT384">Relação com o treinador +2</label><br>
+                <label id="LT385">Dinheiro -30</label>
+            </div>
+            <br>
+            <br>
+            <button onclick="irParaMenu()">Ok</button>
+        </div>
+
+        <script>
+
         function verOfertaWestHam(){
             document.getElementById("D13").style.display="none";
             document.getElementById("D23").style.display="none";
@@ -5215,7 +5307,143 @@
         function fecharAvisoFaltaDeDinheiro(){
             document.getElementById("D20").style.display="none";
         }
+
+        function respostaQuizTaticasOfensivas0043(nResp){
+            if (quizTaticasOfensivas === 1.1){
+                if (nResp === 1 || nResp === 2 || nResp === 4){
+                    document.getElementById("D96").style.display="none";
+                    document.getElementById("D25").style.display="block";
+                    energia -=15;
+                } else if (nResp === 3){
+                    quizTaticasOfensivas = 1.2;
+                    usar0043_1();
+                }
+            } else if (quizTaticasOfensivas === 1.2){
+                if (nResp === 1 || nResp === 3 || nResp === 4){
+                    document.getElementById("D96").style.display="none";
+                    document.getElementById("D25").style.display="block";
+                    energia -=15;
+                } else if (nResp === 2){
+                    quizTaticasOfensivas = 1.3;
+                    usar0043_1();
+                }
+            } else if (quizTaticasOfensivas === 1.3){
+                if (nResp === 1 || nResp === 2 || nResp === 4){
+                    document.getElementById("D96").style.display="none";
+                    document.getElementById("D25").style.display="block";
+                    energia -=15;
+                } else if (nResp === 3){
+                    quizTaticasOfensivas = 2.1;
+                    document.getElementById("D99").style.display="block";
+                    document.getElementById("D96").style.display="none";
+                    energia -=15;
+                    habPasse ++;
+                    estudouHoje = 1;
+                }
+            }
+        }
+
+        function respostaQuizTaticasDefensivas0043(nResp){
+            if (quizTaticasDefensivas === 1.1){
+                if (nResp === 2 || nResp === 3 || nResp === 4){
+                    document.getElementById("D97").style.display="none";
+                    document.getElementById("D25").style.display="block";
+                    energia -=15;
+                } else if (nResp === 3){
+                    quizTaticasDefensivas === 1.2;
+                    usar0043_2();
+                }
+            } else if (quizTaticasDefensivas === 1.2){
+                if (nResp === 2 || nResp === 3 || nResp === 4){
+                    document.getElementById("D97").style.display="none";
+                    document.getElementById("D25").style.display="block";
+                    energia -=15;
+                } else if (nResp === 2){
+                    quizTaticasDefensivas = 1.3;
+                    usar0043_2();
+                }
+            } else if (quizTaticasDefensivas === 1.3){
+                if (nResp === 1 || nResp === 3 || nResp === 4){
+                    document.getElementById("D97").style.display="none";
+                    document.getElementById("D25").style.display="block";
+                    energia -=15;
+                } else if (nResp === 3){
+                    quizTaticasDefensivas = 2.1;
+                    document.getElementById("D102").style.display="block";
+                    document.getElementById("D97").style.display="none";
+                    energia -=15;
+                    habDefesa ++;
+                    estudouHoje = 1;
+                }
+            }
+        }
     </script>
+
+    <div id="D98" class="aviso" style="display: none;">
+        <div class="close"></div>
+        <label id="LT370">Resposta errada. Tente estudar de novo outro dia.</label><br>
+        <div class="close"></div>
+        <div class="infoStats">
+            <label id="LT371">Energia -15</label>
+        </div>
+        <div class="close"></div>
+        <button id="BT148" onclick="irParaMenu()">Ok</button>
+        <div class="close"></div>
+    </div>
+
+    <div id="D99" class="aviso" style="display: none;">
+        <div class="close"></div>
+        <label id="LT372">Você adquiriu conhecimentos táticos ofensivos, isso melhorará sua visão de jogo na hora dos passes durante as partidas.</label><br>
+        <div class="close"></div>
+        <div class="infoStats">
+            <label id="LT373">Energia -15</label><br>
+            <label id="LT374">Passe +1</label>
+        </div>
+        <div class="close"></div>
+        <button id="BT149" onclick="irParaMenu(); irParaVida();">Ok</button>
+        <div class="close"></div>
+    </div>
+
+    <div id="D100" class="aviso" style="display: none;">
+        <label id="LT378">Sem energia suficiente</label>
+        <div class="close"></div>
+        <button id="BT152" onclick="irParaMenu(); irParaVida();">Ok</button>
+    </div>
+
+    <div id="D101" class="aviso" style="display: none;">
+        <label id="LT379">Sem energia suficiente</label>
+        <div class="close"></div>
+        <button id="BT151" onclick="irParaMenu(); irParaVida();">Ok</button>
+    </div>
+
+    <div id="D102" class="aviso" style="display: none;">
+        <div class="close"></div>
+        <label id="LT375">Você adquiriu conhecimentos táticos defensivos, isso melhorará sua habilidade defensiva durante as partidas.</label><br>
+        <div class="close"></div>
+        <div class="infoStats">
+            <label id="LT376">Energia -15</label><br>
+            <label id="LT377">Defesa +1</label>
+        </div>
+        <div class="close"></div>
+        <button id="BT150" onclick="irParaMenu(); irParaVida();">Ok</button>
+        <div class="close"></div>
+    </div>
+
+    <div id="D104" style="display: none;">
+        <div class="close"></div>
+        <label id="LT386">Você já completou todos os estudos de táticas ofensivas.</label>
+        <div class="close"></div>
+        <button id="BT157" onclick="irParaMenu(); irParaVida();">Ok</button>
+        <div class="close"></div>
+    </div>
+
+    <div id="D105" style="display: none;">
+        <div class="close"></div>
+        <label id="LT387">Você já completou todos os estudos de táticas defensivas.</label>
+        <div class="close"></div>
+        <button id="BT158" onclick="irParaMenu(); irParaVida();">Ok</button>
+        <div class="close"></div>
+    </div>
 
     <div class="menu" id="D17" style="display: none;">
         <div class="close"></div>
@@ -5672,7 +5900,9 @@
             <div class="close"></div>
             <label id="LT231">PC Dhall Latud 5400</label>
             <img src="img/Products/4/PC Dhall Latud 5400.jpg">
-            <button id="BT87" onclick="vender0043()">Vender</button>
+            <button id="BT87" onclick="vender0043()">Vender</button><br>
+            <button style="display: none;" id="BT155" onclick="usar0043_1()">Estudar táticas de ataque</button><br>
+            <button style="display: none;" id="BT156" onclick="usar0043_2()">Estudar táticas de defesa</button>
             <div class="close"></div>
         </div>
 
@@ -5892,6 +6122,26 @@
             <label id="LT369">Dinheiro -1000</label>
         </div>
         <button id="BT146" onclick="irParaMenu()">Ok</button>
+    </div>
+
+    <div id="D96" class="decisao" style="display: none;">
+        <label id=L41 class="pergunta">Pergunta quiz ofensivo</label>
+        <div class="resposta">
+            <button id="B14" class="escolherResposta" onclick="respostaQuizTaticasOfensivas0043(1)">Resposta 1</button>
+            <button id="B15" class="escolherResposta" onclick="respostaQuizTaticasOfensivas0043(2)">Resposta 2</button><br>
+            <button id="B16" class="escolherResposta" onclick="respostaQuizTaticasOfensivas0043(3)">Resposta 3</button>
+            <button id="B17" class="escolherResposta" onclick="respostaQuizTaticasOfensivas0043(4)">Resposta 4</button>
+        </div>
+    </div>
+
+    <div id="D97" class="decisao" style="display: none;">
+        <label id=L42 class="pergunta">Pergunta quiz defensivo</label>
+        <div class="resposta">
+            <button id="B18" class="escolherResposta" onclick="respostaQuizTaticasDefensivas0043(1)">Resposta 1</button>
+            <button id="B19" class="escolherResposta" onclick="respostaQuizTaticasDefensivas0043(2)">Resposta 2</button><br>
+            <button id="B20" class="escolherResposta" onclick="respostaQuizTaticasDefensivas0043(3)">Resposta 3</button>
+            <button id="B21" class="escolherResposta" onclick="respostaQuizTaticasDefensivas0043(4)">Resposta 4</button>
+        </div>
     </div>
 
     <script>
@@ -6115,32 +6365,332 @@
             irParaVida();
         }
 
+        function usar0043_1(){
+            if (estudouHoje === 0){
+                if (habPasse < 100){
+                    if (energia > 14){
+                        document.getElementById("D25").style.display="none";
+                        document.getElementById("D96").style.display="block";
+
+                        if (quizTaticasOfensivas === 1.1){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L41").textContent="Qual é o principal objetivo de uma tabela (um-dois) no ataque?"
+                                document.getElementById("B14").textContent="Chutar de longe"
+                                document.getElementById("B15").textContent="Ganhar tempo e recuar a bola"
+                                document.getElementById("B16").textContent="Criar espaço e ultrapassar a marcação"
+                                document.getElementById("B17").textContent="Gastar tempo de jogo"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L41").textContent="Quin és l'objectiu d'una paret en atac?"
+                                document.getElementById("B14").textContent="Rematar de lluny"
+                                document.getElementById("B15").textContent="Guanyar temps"
+                                document.getElementById("B16").textContent="Generar espais i superar la marca dels defensors"
+                                document.getElementById("B17").textContent="Gastar temps de partit"
+                            } else if (idioma === "en"){
+                                document.getElementById("L41").textContent="Which is the objective of a wall on attack?"
+                                document.getElementById("B14").textContent="To do long range shots"
+                                document.getElementById("B15").textContent="To gain time"
+                                document.getElementById("B16").textContent="To generate spaces and pass trough the defenders"
+                                document.getElementById("B17").textContent="To spend time"
+                            }
+                        } else if (quizTaticasOfensivas === 1.2){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L41").textContent="Por que abrir o jogo pelas pontas é importante no ataque?"
+                                document.getElementById("B14").textContent="Para evitar passes curtos"
+                                document.getElementById("B15").textContent="Para alongar a defesa rival"
+                                document.getElementById("B16").textContent="Para manter a posse de bola sem riscos"
+                                document.getElementById("B17").textContent="Para diminuir a velocidade do jogo"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L41").textContent="Per què és important obrir el joc per les bandes en atac?"
+                                document.getElementById("B14").textContent="Per evitar passades curtes"
+                                document.getElementById("B15").textContent="Per estirar la defensa rival"
+                                document.getElementById("B16").textContent="Per mantenir la possessió sense risc"
+                                document.getElementById("B17").textContent="Per reduir la velocitat del joc"
+                            } else if (idioma === "en"){
+                                document.getElementById("L41").textContent="Why opening up the game on the wings is important in attack?"
+                                document.getElementById("B14").textContent="To avoid short passes"
+                                document.getElementById("B15").textContent="To lengthen the opponent's defense."
+                                document.getElementById("B16").textContent="To keep the possession without risks"
+                                document.getElementById("B17").textContent="To decrease the speed of the match"
+                            }
+                        } else if (quizTaticasOfensivas === 1.3){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L41").textContent="Quando um atacante deve se desmarcar?"
+                                document.getElementById("B14").textContent="Apenas quando recebe a bola"
+                                document.getElementById("B15").textContent="Quando o time está perdendo"
+                                document.getElementById("B16").textContent="Quando percebe espaço livre para receber a bola"
+                                document.getElementById("B17").textContent="Quando vê uma oportunidade de ajudar o time a defender"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L41").textContent="Quan un delanter ha de desmarcar-se?"
+                                document.getElementById("B14").textContent="Només quan rep la pilota"
+                                document.getElementById("B15").textContent="Quan l'equip està perdent"
+                                document.getElementById("B16").textContent="Quan vou que hi ha espai lliure per rebre la pilota"
+                                document.getElementById("B17").textContent="Quan veu una oportunitat d'ajudar l'equip a defensar"
+                            } else if (idioma === "en"){
+                                document.getElementById("L41").textContent="When should a striker make a run into space??"
+                                document.getElementById("B14").textContent="Only when he receives the ball."
+                                document.getElementById("B15").textContent="When the team is losing"
+                                document.getElementById("B16").textContent="When he notices open space to receive the ball"
+                                document.getElementById("B17").textContent="When he sees an opportunity to help the team defend"
+                            }
+                        }
+                    } else {
+                        document.getElementById("D100").style.display="block";
+                        document.getElementById("D25").style.display="none";
+                    }
+                }
+            }
+        }
+
+
+        function usar0043_2(){
+            if (estudouHoje === 0){
+                if (habDefesa < 100){
+                    if (energia > 14){
+                        document.getElementById("D25").style.display="none";
+                        document.getElementById("D97").style.display="block";
+
+                        if (quizTaticasDefensivas === 4.1){
+                            document.getElementById("D97").style.display="none";
+                            document.getElementById("D105").style.display="block";
+
+
+
+
+                        } else if (quizTaticasDefensivas === 1.1){
+                                if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Qual é o principal objetivo da linha defensiva?"
+                                document.getElementById("B18").textContent="Criar impedimento e controlar a profundidade"
+                                document.getElementById("B19").textContent="Manter a posse de bola"
+                                document.getElementById("B20").textContent="Marcar gols"
+                                document.getElementById("B21").textContent="Encurtar o campo ofensivo"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Quin és l'objectiu de la línia defensiva?"
+                                document.getElementById("B18").textContent="Generar fora de joc i controlar la profunditat"
+                                document.getElementById("B19").textContent="Mantenir la possessió de pilota"
+                                document.getElementById("B20").textContent="Marcar gols"
+                                document.getElementById("B21").textContent="Fer més curta la zona ofensiva"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="What is the main objective of the defensive line?"
+                                document.getElementById("B18").textContent="To generate ofsides and control the depth"
+                                document.getElementById("B19").textContent="To keep the possession"
+                                document.getElementById("B20").textContent="To score goals"
+                                document.getElementById("B21").textContent="Shorten the offensive field"
+                            }
+                        } else if (quizTaticasDefensivas === 1.2){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Por que é importante pressionar o jogador que está com a bola?"
+                                document.getElementById("B18").textContent="Para forçar passes difíceis"
+                                document.getElementById("B19").textContent="Para cansar o adversário"
+                                document.getElementById("B20").textContent="Para desorganizar a defesa"
+                                document.getElementById("B21").textContent="Para evitar faltas"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Per què és important pressionar el jugador que té la pilota?"
+                                document.getElementById("B18").textContent="Per forçar passes difícils"
+                                document.getElementById("B19").textContent="Per cansar l'equip rival"
+                                document.getElementById("B20").textContent="Per desorganitzar la defensa"
+                                document.getElementById("B21").textContent="Per evitar faltes"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="Why is it important to put pressure on the player who has the ball??"
+                                document.getElementById("B18").textContent="To force difficult passes"
+                                document.getElementById("B19").textContent="To tire out the opponent"
+                                document.getElementById("B20").textContent="To disrupt the defense"
+                                document.getElementById("B21").textContent="to avoid committing fouls"
+                            }
+                        } else if (quizTaticasDefensivas === 1.3){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Para quê serve fechar o espaço central?"
+                                document.getElementById("B18").textContent="Para deixar a lateral livre"
+                                document.getElementById("B19").textContent="Para proteger a zona mais perigosa do campo"
+                                document.getElementById("B20").textContent="Para subir a linha defensiva"
+                                document.getElementById("B21").textContent="Para marcar individualmente os atacantes"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Per què serveix tancar l'espai del mig?"
+                                document.getElementById("B18").textContent="Per deixar la zona lateral lliure"
+                                document.getElementById("B19").textContent="Per protegir la zona més perillosa del camp"
+                                document.getElementById("B20").textContent="Per pujar la línia defensiva"
+                                document.getElementById("B21").textContent="Per marcar individualment els delanters"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="What is the purpose of closing off the central space??"
+                                document.getElementById("B18").textContent="To leave the side free"
+                                document.getElementById("B19").textContent="To protect the most dangerous area of ​​the field"
+                                document.getElementById("B20").textContent="To move up the defensive line"
+                                document.getElementById("B21").textContent="To mark the attackers individually"
+                            }
+
+
+                        } else if (quizTaticasDefensivas === 2.1){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Qual é a vantagem da marcação por zona em comparação à marcação individual?"
+                                document.getElementById("B18").textContent="Poder perseguir um jogador o campo inteiro"
+                                document.getElementById("B19").textContent="Manter a estrutura defensiva"
+                                document.getElementById("B20").textContent="Evitar passes longos"
+                                document.getElementById("B21").textContent="Garante a recuperação de bola"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Quin és l'avantatge de la marcació per zona en comparació a la marcació individual?"
+                                document.getElementById("B18").textContent="Poder perseguir un jugador en tot el camp"
+                                document.getElementById("B19").textContent="Mantenir l'estructura defensiva"
+                                document.getElementById("B20").textContent="Evitar passes llargs"
+                                document.getElementById("B21").textContent="Garanteix que l'equip recuperi la pilota"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="What is the advantage of zonal marking compared to man-to-man marking?"
+                                document.getElementById("B18").textContent="Defending the same player around all the field"
+                                document.getElementById("B19").textContent="Maintain the defensive structure"
+                                document.getElementById("B20").textContent="To not allow long passes"
+                                document.getElementById("B21").textContent="Make sure the team can recover the ball"
+                            }
+                        } else if (quizTaticasDefensivas === 2.2){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Por que uma linha defensiva alta é um risco?"
+                                document.getElementById("B18").textContent="Ocupa pouco campo"
+                                document.getElementById("B19").textContent="Deixa espaço nas costas"
+                                document.getElementById("B20").textContent="Faz o time perder a posse de bola"
+                                document.getElementById("B21").textContent="Gera cartões amarelos"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Per què tenir la línia defensiva alta és un risc?"
+                                document.getElementById("B18").textContent="Ocupa poc espai del camp"
+                                document.getElementById("B19").textContent="Deixa espai per darrera"
+                                document.getElementById("B20").textContent="Fa que l'equip perdi la possessió de pilota"
+                                document.getElementById("B21").textContent="Genera targetes grogues"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="Why does a high defensive line is a risk?"
+                                document.getElementById("B18").textContent="It doesn't use much space on the field"
+                                document.getElementById("B19").textContent="It let's space behind the defenders"
+                                document.getElementById("B20").textContent="It causes the team to lose possession of the ball"
+                                document.getElementById("B21").textContent="It generates yellow cards"
+                            }
+                        } else if (quizTaticasDefensivas === 2.3){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Quando é útil fazer uma falta tática?"
+                                document.getElementById("B18").textContent="Sempre que possível"
+                                document.getElementById("B19").textContent="Para parar contra-ataques perigosos"
+                                document.getElementById("B20").textContent="Para desestabilizar o árbitro"
+                                document.getElementById("B21").textContent="Só na área adversária"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Quan és ùtil fer una falta tàctica?"
+                                document.getElementById("B18").textContent="Sempre que sigui possible"
+                                document.getElementById("B19").textContent="Per parar contraatacs perillosos"
+                                document.getElementById("B20").textContent="Per desestabilitzar l'àrbit"
+                                document.getElementById("B21").textContent="Només a l'àrea del rival"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="When is it useful to commit a tactical foul?"
+                                document.getElementById("B18").textContent="Whenever possible"
+                                document.getElementById("B19").textContent="To stop dangerous counterattacks"
+                                document.getElementById("B20").textContent="To destabilize the referee"
+                                document.getElementById("B21").textContent="Only in the opponent's area"
+                            }
+
+
+
+                        } else if (quizTaticasDefensivas === 3.1){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="O que caracteriza uma defesa bem compacta?"
+                                document.getElementById("B18").textContent="Jogadores afastados"
+                                document.getElementById("B19").textContent="Linhas próximas e pouco espaço entre setores"
+                                document.getElementById("B20").textContent="Pressão individual constante"
+                                document.getElementById("B21").textContent="Somente marcação em quem tem a bola"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Què catacteritza una defensa ben compactada?"
+                                document.getElementById("B18").textContent="Jugadors apartats"
+                                document.getElementById("B19").textContent="Línies pròximes i poc espai entre zones"
+                                document.getElementById("B20").textContent="Pressió individual constant"
+                                document.getElementById("B21").textContent="Només marcar qui té la pilota"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="What characterizes a well-compacted defense?"
+                                document.getElementById("B18").textContent="Players sidelined"
+                                document.getElementById("B19").textContent="Close rows and little space between sections"
+                                document.getElementById("B20").textContent="Constant individual pressure"
+                                document.getElementById("B21").textContent="Only marking the player with the ball"
+                            }
+                        } else if (quizTaticasDefensivas === 3.2){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Qual jogador costuma pressionar primeiro na saída adversária?"
+                                document.getElementById("B18").textContent="Zagueiro"
+                                document.getElementById("B19").textContent="Atacante"
+                                document.getElementById("B20").textContent="Goleiro"
+                                document.getElementById("B21").textContent="Lateral"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Quin jugador sol pressionar primer a la sortida rival?"
+                                document.getElementById("B18").textContent="Defensor"
+                                document.getElementById("B19").textContent="Davanter"
+                                document.getElementById("B20").textContent="Porter"
+                                document.getElementById("B21").textContent="Lateral"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="Which player usually applies pressure first when the opponent is building up play?"
+                                document.getElementById("B18").textContent="Defender"
+                                document.getElementById("B19").textContent="Striker"
+                                document.getElementById("B20").textContent="Goalkeeper"
+                                document.getElementById("B21").textContent="Full-back"
+                            }
+                        } else if (quizTaticasDefensivas === 3.3){
+                            if (idioma === "pt-Br"){
+                                document.getElementById("L42").textContent="Por que comunicação é essencial na defesa?"
+                                document.getElementById("B18").textContent="Para motivação disciplinar"
+                                document.getElementById("B19").textContent="Para coordenar movimentos e coberturas"
+                                document.getElementById("B20").textContent="Para indicar quem deve chutar"
+                                document.getElementById("B21").textContent="Para controlar a posse de bola"
+                            } else if (idioma === "cat"){
+                                document.getElementById("L42").textContent="Per què comunicació és essencial a la defensa?"
+                                document.getElementById("B18").textContent="Per la motivació disciplinar"
+                                document.getElementById("B19").textContent="Per coordinar moviments i marcació"
+                                document.getElementById("B20").textContent="Per indica qui ha de rematar"
+                                document.getElementById("B21").textContent="Per controlar la possessió de pilota"
+                            } else if (idioma === "en"){
+                                document.getElementById("L42").textContent="Why is communication essential in defense?"
+                                document.getElementById("B18").textContent="For disciplinary motivation"
+                                document.getElementById("B19").textContent="To coordinate movements and cover"
+                                document.getElementById("B20").textContent="To indicate who should shoot"
+                                document.getElementById("B21").textContent="To control the possession of the ball"
+                            }
+                        }
+
+
+
+                    } else {
+                        document.getElementById("D100").style.display="block";
+                        document.getElementById("D25").style.display="none";
+                    }
+                }
+            }
+        }
+
+
         function usar0051_1(){
-            document.getElementById("D93").style.display="block";
-            document.getElementById("D25").style.display="none";
-            energia -=5,
-            relTorcida ++;
+            if (energia > 4){
+                document.getElementById("D93").style.display="block";
+                document.getElementById("D25").style.display="none";
+                energia -=5,
+                relTorcida ++;
+            } else {
+                document.getElementById("D25").style.display="none";
+                document.getElementById("D101").style.display="block";
+            }
         }
 
         function usar0052_1(){
 
-            let chance0052;
+            if (energia > 4){
 
-            chance0052 = Math.random();
+                let chance0052;
+                chance0052 = Math.random();
 
-            if (chance0052 < 0.8){
-                document.getElementById("D93").style.display="block";
-                document.getElementById("D25").style.display="none";
-                energia -=5;
-                relTorcida + 1;
+                if (chance0052 < 0.8){
+                    document.getElementById("D93").style.display="block";
+                    document.getElementById("D25").style.display="none";
+                    energia -=5;
+                    relTorcida + 1;
+                } else {
+                    document.getElementById("D94").style.display="block";
+                    document.getElementById("D25").style.display="none";
+                    energia -=5,
+                    relTorcida -=2;
+                    dinheiro -=1000;
+                    noticiaPredefinida = 14;
+                    gerarNoticia();
+                }
+
             } else {
-                document.getElementById("D94").style.display="block";
                 document.getElementById("D25").style.display="none";
-                energia -=5,
-                relTorcida -=2;
-                dinheiro -=1000;
-                noticiaPredefinida = 14;
-                gerarNoticia();
+                document.getElementById("D101").style.display="block";
             }
         }
     </script>
@@ -7308,8 +7858,8 @@
                 document.getElementById("L14").textContent = "Sua equipe não conseguiu subir para a Premier League, mas seu contrato acabou e tem 2 equipes interessadas.";
                 document.getElementById("L16").textContent = "Você está no banco de reservas devido a falta de energia.";
                 document.getElementById("L17").textContent = "Você não tem energia suficiente para treinar.";
-                document.getElementById("L18").textContent = "Você recebeu um passe em velocidade perto da linha de fundo.";
-                document.getElementById("L18B").textContent = "Escanteio a favor de sua equipe. A bola vem em sua direção.";
+                document.getElementById("L18").textContent = "Escanteio a favor de sua equipe. A bola vem em sua direção.";
+                document.getElementById("L18B").textContent = "Você recebeu um passe em velocidade perto da linha de fundo.";
                 document.getElementById("L19").textContent = "Você tem contrato com a sua equipe para a próxima temporada.";
                 document.getElementById("L21").textContent = "Sua habilidade é: -- / 100";
                 document.getElementById("L24").textContent = "Seu contrato com a equipe acabou. As seis maiores equipes estão interessadas.";
@@ -7710,6 +8260,24 @@
                 document.getElementById("LT367").textContent = "Relação com a torcida -2";
                 document.getElementById("LT368").textContent = "Energia -5";
                 document.getElementById("LT369").textContent = "Dinheiro -1000";
+                document.getElementById("LT370").textContent = "Resposta errada. Tente estudar de novo outro dia.";
+                document.getElementById("LT371").textContent = "Energia -15";
+                document.getElementById("LT372").textContent = "Você adquiriu conhecimentos táticos ofensivos, isso melhorará sua visão de jogo na hora dos passes durante as partidas.";
+                document.getElementById("LT373").textContent = "Energia -15";
+                document.getElementById("LT374").textContent = "Passe +1";
+                document.getElementById("LT375").textContent = "Você adquiriu conhecimentos táticos defensivos, isso melhorará sua habilidade defensiva durante as partidas.";
+                document.getElementById("LT376").textContent = "Energia -15";
+                document.getElementById("LT377").textContent = "Defesa +1";
+                document.getElementById("LT378").textContent = "Sem energia suficiente";
+                document.getElementById("LT379").textContent = "Sem energia suficiente";
+                document.getElementById("LT380").textContent = "O treinador quer jantar com você no restaurante e trocar algumas ideias. O preço vai ser 30€.";
+                document.getElementById("LT381").textContent = "O treinador ficou triste por isso.";
+                document.getElementById("LT382").textContent = "Relação com o treinador -5";
+                document.getElementById("LT383").textContent = "O treinador está contente com a sua presença.";
+                document.getElementById("LT384").textContent = "Relação com o treinador +2";
+                document.getElementById("LT385").textContent = "Dinheiro -30";
+                document.getElementById("LT386").textContent = "Você já completou todos os estudos de táticas ofensivas.";
+                document.getElementById("LT387").textContent = "Você já completou todos os estudos de táticas defensivas.";
 
                 document.getElementById("H2T1").textContent = "Fim de temporada"
                 document.getElementById("H2T2").textContent = "Contrato Wolverhampton"
@@ -7726,6 +8294,7 @@
 
                 document.getElementById("H1T1").textContent = "VOCÊ PODE VER SUAS ESTATÍSTICAS CLICANDO NO BOTÃO DE ESTATÍSTICAS"
                 document.getElementById("H1T2").textContent = "É RECOMENDADO SEMPRE TREINAR SUAS HABILIDADES QUANDO TIVER 90% DE ENERGIA OU MAIS FALTANDO MAIS DE UM DIA PARA O PRÓXIMO JOGO"
+                document.getElementById("H1T3").textContent = "DICA: SE VOCÊ COMPRAR UMA CASA, NÃO VAI MAIS PRECISAR PAGAR ALUGUEL DE APARTAMENTO!"
 
                 document.getElementById("BT1").textContent = "Modo carreira"
                 document.getElementById("BT2").textContent = "Campeonatos"
@@ -7875,6 +8444,17 @@
                 document.getElementById("BT145").textContent = "Ok"
                 document.getElementById("BT146").textContent = "Ok"
                 document.getElementById("BT147").textContent = "Animais"
+                document.getElementById("BT148").textContent = "Ok"
+                document.getElementById("BT149").textContent = "Ok"
+                document.getElementById("BT150").textContent = "Ok"
+                document.getElementById("BT151").textContent = "Ok"
+                document.getElementById("BT152").textContent = "Ok"
+                document.getElementById("BT153").textContent = "Ir jantar com ele"
+                document.getElementById("BT154").textContent = "Não ir"
+                document.getElementById("BT155").textContent = "Estudar táticas de ataque"
+                document.getElementById("BT156").textContent = "Estudar táticas de defesa"
+                document.getElementById("BT157").textContent = "Ok"
+                document.getElementById("BT158").textContent = "Ok"
 
                 document.getElementById("alturaVelocidadeLabel").textContent = "velocidade:"
                 document.getElementById("alturaForcaLabel").textContent = "força:"
@@ -7914,8 +8494,8 @@
                 document.getElementById("L14").textContent = "El teu equip no ha aconseguit pujar a la Premier League, però el teu contracte s'ha caducat i tens 2 equips interessats.";
                 document.getElementById("L16").textContent = "Ets suplent en aquest partit per falta d'energia.";
                 document.getElementById("L17").textContent = "No tens energia suficient per entrenar.";
-                document.getElementById("L18").textContent = "Has rebut una passada en velocitat a prop de la línia de fons.";
-                document.getElementById("L18B").textContent = "Corner a favor del teu equip. La pilota ve en la teva direcció.";
+                document.getElementById("L18").textContent = "Corner a favor del teu equip. La pilota ve en la teva direcció.";
+                document.getElementById("L18B").textContent = "Has rebut una passada en velocitat a prop de la línia de fons.";
                 document.getElementById("L19").textContent = "Tens contracte amb el teu equip per la temporada vinent.";
                 document.getElementById("L21").textContent = "La teva habilitat és: -- / 100";
                 document.getElementById("L24").textContent = "El teu contracte amb l'equip s'ha caducat. Tens ofertes dels sis millors equips.";
@@ -8316,6 +8896,24 @@
                 document.getElementById("LT367").textContent = "Relació amb els aficionats -2";
                 document.getElementById("LT368").textContent = "Energia -5";
                 document.getElementById("LT369").textContent = "Diners -1000";
+                document.getElementById("LT370").textContent = "Resposta equivocada. Intenta tornar a estudiar un altre dia.";
+                document.getElementById("LT371").textContent = "Energia -15";
+                document.getElementById("LT372").textContent = "Has aconseguit coneixements tàctics ofensius, això millorarà la teva visió de joc als partits.";
+                document.getElementById("LT373").textContent = "Energia -15";
+                document.getElementById("LT374").textContent = "Passe +1";
+                document.getElementById("LT375").textContent = "Has aconseguit coneixements tàctics defensius, això t'ajudarà a defensar millor durant els partits.";
+                document.getElementById("LT376").textContent = "Energia -15";
+                document.getElementById("LT377").textContent = "Defensa +1";
+                document.getElementById("LT378").textContent = "Sense energia suficient";
+                document.getElementById("LT379").textContent = "Sense energia suficient";
+                document.getElementById("LT380").textContent = "L'entrenador vol sopar amb tu al restaurant i parlar amb tu. El preu és de 30€";
+                document.getElementById("LT381").textContent = "L'entrenador ha quedat trist per això.";
+                document.getElementById("LT382").textContent = "Relació amb l'entrenador -5";
+                document.getElementById("LT383").textContent = "L'entrenador s'alegra de que hagis vingut.";
+                document.getElementById("LT384").textContent = "Relació amb l'entrenador +2";
+                document.getElementById("LT385").textContent = "Diners -30";
+                document.getElementById("LT386").textContent = "Ja has acabat tots els estudis de tàctiques ofensives";
+                document.getElementById("LT387").textContent = "Ja has acabat tots els estudis de tàctiques defensives";
 
                 document.getElementById("H2T1").textContent = "Fi de temporada"
                 document.getElementById("H2T2").textContent = "Contracte Wolverhampton"
@@ -8332,6 +8930,7 @@
 
                 document.getElementById("H1T1").textContent = "POTS VEURE LES TEVES ESTADÍSTIQUES CLICANT EL BOTÓ D'ESTADÍSTIQUES"
                 document.getElementById("H1T2").textContent = "SEMPRE ES RECOMANA ENTRENAR LES HABILITATS QUAN TINGUIS 90% D'ENERGIA O MÉS SENSE QUE HI HAGI PARTIT EL DIA SEGÜENT"
+                document.getElementById("H1T3").textContent = "SI COMPRES UNA CASA, JA NO HAURÀS DE PAGAR EL LLOGUER DEL PIS!"
 
                 document.getElementById("BT1").textContent = "Mode carrera"
                 document.getElementById("BT2").textContent = "Campionats"
@@ -8481,6 +9080,17 @@
                 document.getElementById("BT145").textContent = "Ok"
                 document.getElementById("BT146").textContent = "Ok"
                 document.getElementById("BT147").textContent = "Animals"
+                document.getElementById("BT148").textContent = "Ok"
+                document.getElementById("BT149").textContent = "Ok"
+                document.getElementById("BT150").textContent = "Ok"
+                document.getElementById("BT151").textContent = "Ok"
+                document.getElementById("BT152").textContent = "Ok"
+                document.getElementById("BT153").textContent = "Anar a sopar amb ell"
+                document.getElementById("BT154").textContent = "No anar-hi"
+                document.getElementById("BT155").textContent = "Estudiar tàctiques d'atac"
+                document.getElementById("BT156").textContent = "Estudiar tàctiques de defensa"
+                document.getElementById("BT157").textContent = "Ok"
+                document.getElementById("BT158").textContent = "Ok"
 
                 document.getElementById("BO1").textContent = "Resgatar recompensa"
                 document.getElementById("BO2").textContent = "Resgatar recompensa"
@@ -8506,6 +9116,642 @@
                 document.getElementById("BMT12").textContent = "POLÍTICA DE PRIVACITAT";
                 
                 document.getElementById("L39").textContent = "CATALÀ";
+
+            } else if (idioma === "en"){
+
+                document.getElementById("L1").textContent = "You've been selected for the starting lineup. The boss will give you extra money if you meet the following objectives:";
+                document.getElementById("L2").textContent = "You're on the bench because of a bad relationship with the coach.";
+                document.getElementById("L5").textContent = "You've received the ball at the edge of the penalty area. What do you want to do?";
+                document.getElementById("L6").textContent = "Your opponent is on a fast attack and you're the last man. What do you want to do?";
+                document.getElementById("L13").textContent = "Your team has been promoted to the Premier League! Your boss has offered you a contract extension for the following season.";
+                document.getElementById("L14").textContent = "Your team failed to get promoted to the Premier League, but your contract has expired and there are 2 teams interested.";
+                document.getElementById("L16").textContent = "You are on the bench due to the lack of energy";
+                document.getElementById("L17").textContent = "You don't have enough energy to train.";
+                document.getElementById("L18").textContent = "Corner kick for your team. The ball is coming towards you.";
+                document.getElementById("L18B").textContent = "You received a through ball near the byline.";
+                document.getElementById("L19").textContent = "You have a contract with your team for the next season.";
+                document.getElementById("L21").textContent = "Your hability is: -- / 100";
+                document.getElementById("L24").textContent = "His contract with the team has ended. The Big Six are interested.";
+                document.getElementById("L25").textContent = "A market agent can help you determine a good price for the house.";
+                document.getElementById("L39").textContent = "English";
+
+                document.getElementById("B1").textContent = "Do a long range shot";
+                document.getElementById("B2").textContent = "Dribble past the defender and shoot";
+                document.getElementById("B3").textContent = "Pass to the teammate on the left";
+                document.getElementById("B4").textContent = "Do a tackle";
+                document.getElementById("B5").textContent = "Surround stricker";
+                document.getElementById("B6").textContent = "take down attacker";
+                document.getElementById("B7").textContent = "Head the ball into the goal";
+                document.getElementById("B8").textContent = "Head pass";
+                document.getElementById("B9").textContent = "Let the ball pass to the teammate behind";
+                document.getElementById("B10").textContent = "Hire a market agent";
+                document.getElementById("B11").textContent = "Cross";
+                document.getElementById("B12").textContent = "Pass to teammate behind you";
+                document.getElementById("B13").textContent = "Dribble to the edge of the penalty area and shoot";
+
+                document.getElementById("STT1").textContent = "Team:";
+                document.getElementById("STT2").textContent = "Championship:";
+                document.getElementById("STT3").textContent = "Next match:";
+                document.getElementById("STT4").textContent = "Position:";
+                document.getElementById("STT5").textContent = "Energy:";
+                document.getElementById("STT6").textContent = "Money:";
+                document.getElementById("STT7").textContent = "Wage:";
+                document.getElementById("STT8").textContent = "Days to the next match:";
+
+                document.getElementById("LT1").textContent = "Write your name:";
+                document.getElementById("LT2").textContent = "You are starting your football career. Choose your first team.";
+                document.getElementById("LT3").textContent = "Retirement. The game is over.";
+                document.getElementById("LT4").textContent = "Choose your position.";
+                document.getElementById("LT5").textContent = "Choose your height in cm. This will affect the player's starting abilities.";
+                document.getElementById("LT6").textContent = "Salary rejected. Your boss didn't like your attitude.";
+                document.getElementById("LT7").textContent = "Relationship with the manager -10";
+                document.getElementById("LT8").textContent = "Salary accepted.";
+                document.getElementById("LT9").textContent = "A reporter asks what you expect from the end of the season with this team at the beginning of your career.";
+                document.getElementById("LT10").textContent = "Your response increased the fans' faith in the club's success.";
+                document.getElementById("LT11").textContent = "Relationship with the fans +3";
+                document.getElementById("LT12").textContent = "Your response pleased fans, coach, and teammates. Everyone agrees with your objective.";
+                document.getElementById("LT13").textContent = "Relationship with the fans +2";
+                document.getElementById("LT14").textContent = "Relationship with the manager +3";
+                document.getElementById("LT15").textContent = "Relationship with the teammates +2";
+                document.getElementById("LT16").textContent = "Your response pleased the fans, but your coach and teammates thought it was a little too childish.";
+                document.getElementById("LT17").textContent = "Relationship with the fans +3";
+                document.getElementById("LT18").textContent = "Relationship with the manager -1";
+                document.getElementById("LT19").textContent = "Relationship with the teammates -3";
+                document.getElementById("LT20").textContent = "The fans liked your attitude, however, the coach and your teammates thought that response was too selfish.";
+                document.getElementById("LT21").textContent = "Relationship with the fans +3";
+                document.getElementById("LT22").textContent = "Relationship with the manager -2";
+                document.getElementById("LT23").textContent = "Relationship with the teammates -5";
+                document.getElementById("LT24").textContent = "GOOOOOOOOOAL! Great header!";
+                document.getElementById("LT25").textContent = "Relationship with the fans +3";
+                document.getElementById("LT26").textContent = "Relationship with the manager +3";
+                document.getElementById("LT27").textContent = "Weak header! The goalkeeper makes an easy save.";
+                document.getElementById("LT28").textContent = "Relationship with the fans -1";
+                document.getElementById("LT29").textContent = "Relationship with the manager -1";
+                document.getElementById("LT30").textContent = "Relationship with the fans -2";
+                document.getElementById("LT31").textContent = "GOOOOOAL! Great header pass to leave the striker free in front of the goal!";
+                document.getElementById("LT32").textContent = "Relationship with the fans +1";
+                document.getElementById("LT33").textContent = "Relationship with the manager +1";
+                document.getElementById("LT34").textContent = "Relationship with the teammates +3";
+                document.getElementById("LT35").textContent = "The defender wins the challenge and clears the danger!";
+                document.getElementById("LT36").textContent = "Relationship with the fans -2";
+                document.getElementById("LT37").textContent = "Relationship with the manager -1";
+                document.getElementById("LT38").textContent = "GOOOOOAL! Great shot!";
+                document.getElementById("LT39").textContent = "Relationship with the manager +1";
+                document.getElementById("LT40").textContent = "Relationship with the teammates +3";
+                document.getElementById("LT41").textContent = "The striker lets the ball go by, but no one is there to finish.";
+                document.getElementById("LT42").textContent = "Relationship with the fans -3";
+                document.getElementById("LT43").textContent = "Relationship with the manager -2";
+                document.getElementById("LT44").textContent = "GOOOOOOOOOAL! Incredible long-range shot!";
+                document.getElementById("LT45").textContent = "Relationship with the fans +3";
+                document.getElementById("LT46").textContent = "Relationship with the manager +3";
+                document.getElementById("LT47").textContent = "The player's shot went wide!";
+                document.getElementById("LT48").textContent = "Relationship with the fans -1";
+                document.getElementById("LT49").textContent = "Relationship with the manager -1";
+                document.getElementById("LT50").textContent = "Relationship with the teammates -1";
+                document.getElementById("LT51").textContent = "GOOOOOOOAL! Nice dribble and a good shot!";
+                document.getElementById("LT52").textContent = "Relationship with the fans +3";
+                document.getElementById("LT53").textContent = "Relationship with the manager +3";
+                document.getElementById("LT54").textContent = "The crowd liked the dribble, but the shot went waaaay wide of the goal.";
+                document.getElementById("LT55").textContent = "Relationship with the fans +1";
+                document.getElementById("LT56").textContent = "Relationship with the manager -1";
+                document.getElementById("LT57").textContent = "Relationship with the teammates -2";
+                document.getElementById("LT58").textContent = "Great assist! Your team scored and your teammates are happy with the pass!";
+                document.getElementById("LT59").textContent = "Relationship with the fans +2";
+                document.getElementById("LT60").textContent = "Relationship with the manager +3";
+                document.getElementById("LT61").textContent = "Relationship with the teammates +4";
+                document.getElementById("LT62").textContent = "Great assist! Your team scored and your teammates are happy with the pass!";
+                document.getElementById("LT63").textContent = "Relationship with the fans +2";
+                document.getElementById("LT64").textContent = "Relationship with the manager +3";
+                document.getElementById("LT65").textContent = "Relationship with the teammates +4";
+                document.getElementById("LT66").textContent = "Good pass, but the teammate missed the shot!";
+                document.getElementById("LT67").textContent = "Relationship with the fans +1";
+                document.getElementById("LT68").textContent = "Relationship with the manager +2";
+                document.getElementById("LT69").textContent = "Relationship with the teammates +2";
+                document.getElementById("LT70").textContent = "Wrong pass!";
+                document.getElementById("LT71").textContent = "Relationship with the fans -2";
+                document.getElementById("LT72").textContent = "Relationship with the manager -1";
+                document.getElementById("LT73").textContent = "Relationship with the teammates -1";
+                document.getElementById("LT74").textContent = "The defender cleared the ball with a clean tackle!";
+                document.getElementById("LT75").textContent = "Relationship with the fans +1";
+                document.getElementById("LT76").textContent = "Relationship with the manager +1";
+                document.getElementById("LT77").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT78").textContent = "The defender makes a sliding tackle, but the striker dodges him and scores a goal!";
+                document.getElementById("LT79").textContent = "Relationship with the fans -3";
+                document.getElementById("LT80").textContent = "Relationship with the manager -3";
+                document.getElementById("LT81").textContent = "Relationship with the teammates -3";
+                document.getElementById("LT82").textContent = "The defender manages to leave the opponent with no space to continue attacking!";
+                document.getElementById("LT83").textContent = "Relationship with the fans +1";
+                document.getElementById("LT84").textContent = "Relationship with the manager +1";
+                document.getElementById("LT85").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT86").textContent = "The defender tries to close the gap, but fails, and the striker scores!";
+                document.getElementById("LT87").textContent = "Relationship with the fans -3";
+                document.getElementById("LT88").textContent = "Relationship with the manager -3";
+                document.getElementById("LT89").textContent = "Relationship with the teammates -3";
+                document.getElementById("LT90").textContent = "That's a foul! And he's the last man, he's going to get a red card!";
+                document.getElementById("LT91").textContent = "Relationship with the fans -1";
+                document.getElementById("LT92").textContent = "Relationship with the manager -3";
+                document.getElementById("LT93").textContent = "Relationship with the teammates -2";
+                document.getElementById("LT94").textContent = "You were replaced due to lack of energy.";
+                document.getElementById("LT95").textContent = "You are entering the field.";
+                document.getElementById("LT96").textContent = "You received the ball calmly in defense.";
+                document.getElementById("LT97").textContent = "The team continues to exchange passes in defense.";
+                document.getElementById("LT98").textContent = "Relationship with the fans -1";
+                document.getElementById("LT99").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT100").textContent = "The defender misplaced a pass in defense! The opponent steals the ball and attacks at speed!";
+                document.getElementById("LT101").textContent = "Relationship with the fans -3";
+                document.getElementById("LT102").textContent = "Relationship with the manager -1";
+                document.getElementById("LT103").textContent = "Grande passe de lá de trás! O atacante fica na cara do gol e não falha!";
+                document.getElementById("LT104").textContent = "Relationship with the fans +3";
+                document.getElementById("LT105").textContent = "Relationship with the manager +3";
+                document.getElementById("LT106").textContent = "Relationship with the teammates +3";
+                document.getElementById("LT107").textContent = "Great pass from the back, but the striker shoots wide.";
+                document.getElementById("LT108").textContent = "Relationship with the fans +2";
+                document.getElementById("LT109").textContent = "Relationship with the manager +2";
+                document.getElementById("LT110").textContent = "Relationship with the teammates +2";
+                document.getElementById("LT111").textContent = "Pass intercepted.";
+                document.getElementById("LT112").textContent = "Relationship with the fans -1";
+                document.getElementById("LT113").textContent = "Relationship with the manager -1";
+                document.getElementById("LT114").textContent = "The dribbling attempt failed; the opposing team steals the ball on the attack!";
+                document.getElementById("LT115").textContent = "Relationship with the fans -3";
+                document.getElementById("LT116").textContent = "Relationship with the manager -3";
+                document.getElementById("LT117").textContent = "Relationship with the teammates -1";
+                document.getElementById("LT118").textContent = "The player advances from defense to midfield, makes a good pass to the striker, the striker shoots, and it's a goal!";
+                document.getElementById("LT119").textContent = "Relationship with the fans +2";
+                document.getElementById("LT120").textContent = "Relationship with the manager +1";
+                document.getElementById("LT121").textContent = "Relationship with the teammates +3";
+                document.getElementById("LT122").textContent = "The player advances from defense to midfield, makes a good pass to the striker, the striker shoots, but it's a great save by the goalkeeper!";
+                document.getElementById("LT123").textContent = "Relationship with the fans +2";
+                document.getElementById("LT124").textContent = "Relationship with the manager +1";
+                document.getElementById("LT125").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT126").textContent = "The opposing team is starting to build a play from the defense.";
+                document.getElementById("LT126B").textContent = "The team presses and steals the ball in attack!";
+                document.getElementById("LT127").textContent = "Relationship with the fans +2";
+                document.getElementById("LT128").textContent = "Relationship with the manager +1";
+                document.getElementById("LT129").textContent = "Energy -3";
+                document.getElementById("LT130").textContent = "The team applies pressure, but the opponent breaks free from the high press and continues building the play.";
+                document.getElementById("LT131").textContent = "Relationship with the manager -1";
+                document.getElementById("LT132").textContent = "The team stays on the defensive and doesn't give the opponents any space to advance.";
+                document.getElementById("LT133").textContent = "Relationship with the fans -1";
+                document.getElementById("LT134").textContent = "Relationship with the manager +1";
+                document.getElementById("LT135").textContent = "The team retreats, allowing the opponent to exchange passes and get close to the penalty area; the opponent shoots from distance, but the ball goes wide.";
+                document.getElementById("LT136").textContent = "Relationship with the fans -1";
+                document.getElementById("LT137").textContent = "The team falls back, lets the opponent get past midfield and shoot from distance, and it's a goal!";
+                document.getElementById("LT138").textContent = "Relationship with the fans -3";
+                document.getElementById("LT139").textContent = "Relationship with the manager -1";
+                document.getElementById("LT140").textContent = "The opposing team executed a good series of passes, shaking off the pressure until they reached the edge of their own penalty area.";
+                document.getElementById("LT141").textContent = "The defender makes a risky tackle and manages to clear the ball!";
+                document.getElementById("LT142").textContent = "The defender makes a bad tackle, the opponent shoots and GOOOOOAL!";
+                document.getElementById("LT143").textContent = "Relationship with the fans -3";
+                document.getElementById("LT144").textContent = "Relationship with the manager -3";
+                document.getElementById("LT145").textContent = "Relationship with the teammates -3";
+                document.getElementById("LT146").textContent = "The striker shoots, but the shot is blocked by the defender!";
+                document.getElementById("LT147").textContent = "Relationship with the fans +1";
+                document.getElementById("LT148").textContent = "Relationship with the manager +1";
+                document.getElementById("LT149").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT150").textContent = "The striker shoots, the ball deflects off the defender who tries to block it, and it's GOOOOOAL!";
+                document.getElementById("LT151").textContent = "Relationship with the fans -3";
+                document.getElementById("LT152").textContent = "Relationship with the manager -2";
+                document.getElementById("LT153").textContent = "Relationship with the teammates -2";
+                document.getElementById("LT154").textContent = "The striker tries to dribble the ball into the box to shoot, but the defender puts his foot in front and regains possession!";
+                document.getElementById("LT155").textContent = "Relationship with the fans +2";
+                document.getElementById("LT156").textContent = "Relationship with the manager +1";
+                document.getElementById("LT157").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT158").textContent = "The striker enters the penalty area, the defender attempts a challenge but is dribbled past, and it's a fantastic goal for the other team!";
+                document.getElementById("LT159").textContent = "Relationship with the fans -3";
+                document.getElementById("LT160").textContent = "Relationship with the manager -3";
+                document.getElementById("LT161").textContent = "Relationship with the teammates -2";
+                document.getElementById("LT162").textContent = "The player receives a through pass at speed, crosses the ball, and scores with a header!";
+                document.getElementById("LT163").textContent = "Relationship with the fans +2";
+                document.getElementById("LT164").textContent = "Relationship with the manager +2";
+                document.getElementById("LT165").textContent = "Relationship with the teammates +3";
+                document.getElementById("LT166").textContent = "The player receives a through ball at speed, makes a good cross, but the striker misses the header!";
+                document.getElementById("LT167").textContent = "Relationship with the fans +1";
+                document.getElementById("LT168").textContent = "Relationship with the manager +1";
+                document.getElementById("LT169").textContent = "Relationship with the teammates +2";
+                document.getElementById("LT170").textContent = "The player receives a pass at speed, makes the cross, but the cross was bad!";
+                document.getElementById("LT171").textContent = "Relationship with the fans -1";
+                document.getElementById("LT172").textContent = "Relationship with the manager -1";
+                document.getElementById("LT173").textContent = "The player receives a pass almost on the goal line and passes it back to the team to continue building the play!";
+                document.getElementById("LT174").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT175").textContent = "The player receives a pass near the goal line and tries to pass it back, but the pass goes astray and the opponent recovers the ball!";
+                document.getElementById("LT176").textContent = "Relationship with the fans -3";
+                document.getElementById("LT177").textContent = "Relationship with the manager -3";
+                document.getElementById("LT178").textContent = "Relationship with the teammates -1";
+                document.getElementById("LT179").textContent = "The striker receives a pass almost on the goal line, tries to dribble to the edge of the penalty area, but the defender clears the ball!";
+                document.getElementById("LT180").textContent = "Relationship with the fans +1";
+                document.getElementById("LT181").textContent = "Relationship with the manager -1";
+                document.getElementById("LT182").textContent = "Relationship with the teammates -3";
+                document.getElementById("LT183").textContent = "The striker receives a pass almost on the goal line, dribbles to the edge of the box, shoots with placement, but the shot goes wide!";
+                document.getElementById("LT184").textContent = "Relationship with the fans +1";
+                document.getElementById("LT185").textContent = "Relationship with the manager +1";
+                document.getElementById("LT186").textContent = "Relationship with the teammates -2";
+                document.getElementById("LT187").textContent = "The striker receives a pass almost on the goal line, dribbles to the edge of the box, shoots with placement and it's GOOOOOOOAL!";
+                document.getElementById("LT188").textContent = "Relationship with the fans +3";
+                document.getElementById("LT189").textContent = "Relationship with the manager +3";
+                document.getElementById("LT190").textContent = "Relationship with the teammates +2";
+                document.getElementById("LT191").textContent = "You're walking down the street and you see a group of kids playing soccer. One of them is wearing your team's jersey.";
+                document.getElementById("LT192").textContent = "The young fan was delighted!";
+                document.getElementById("LT193").textContent = "Relationship with the fans +1";
+                document.getElementById("LT194").textContent = "The young fans were delighted!";
+                document.getElementById("LT195").textContent = "Relationship with the fans +2";
+                document.getElementById("LT196").textContent = "The young fans were very happy!";
+                document.getElementById("LT197").textContent = "Relationship with the fans +5";
+                document.getElementById("LT198").textContent = "Energy -10";
+                document.getElementById("LT199").textContent = "The young fans didn't like that.";
+                document.getElementById("LT200").textContent = "Relationship with the fans -1";
+                document.getElementById("LT201").textContent = "Relegated teams:";
+                document.getElementById("LT202").textContent = "Promoted teams:";
+                document.getElementById("LT203").textContent = "Salary per week: 8200€";
+                document.getElementById("LT204").textContent = "Duration: half a season";
+                document.getElementById("LT205").textContent = "Salary per week: 8300€";
+                document.getElementById("LT206").textContent = "Duration: half a season";
+                document.getElementById("LT207").textContent = "Your boss increased your salary to €10,000/week and renewed your contract until the middle of the season.";
+                document.getElementById("LT208").textContent = "You don't have the money to buy that product.";
+                document.getElementById("LT209").textContent = "Soccer cleats";
+                document.getElementById("LT210").textContent = "Nayk Nerkurriel Megafly 10";
+                document.getElementById("LT211").textContent = "Vehicles";
+                document.getElementById("LT212").textContent = "Bike Mountain M1";
+                document.getElementById("LT213").textContent = "Chevrorillo Street 2008";
+                document.getElementById("LT214").textContent = "Kart Italia Modelo Gara 2020";
+                document.getElementById("LT215").textContent = "Ñerari LaÑerari 2013";
+                document.getElementById("LT216").textContent = "Houses";
+                document.getElementById("LT216B").textContent = "Modern house";
+                document.getElementById("LT217").textContent = "Luxury house";
+                document.getElementById("LT218").textContent = "Electronic devices";
+                document.getElementById("LT219").textContent = "Zamsunk Talacy S22";
+                document.getElementById("LT220").textContent = "AiFon 16 Promekz";
+                document.getElementById("LT221").textContent = "PC Dhall Latud 5400";
+                document.getElementById("LT222").textContent = "Nayk Nerkurriel Megafly 10";
+                document.getElementById("LT223").textContent = "Bike Mountain M1";
+                document.getElementById("LT224").textContent = "Chevrorillo Street 2008";
+                document.getElementById("LT225").textContent = "Kart Italia Modelo Gara 2020";
+                document.getElementById("LT226").textContent = "Ñerari LaÑerari 2013";
+                document.getElementById("LT227").textContent = "Modern house";
+                document.getElementById("LT228").textContent = "Luxury house";
+                document.getElementById("LT229").textContent = "Zamsunk Talacy S22";
+                document.getElementById("LT230").textContent = "AiFon 16 Promekz";
+                document.getElementById("LT231").textContent = "PC Dhall Latud 5400";
+                document.getElementById("LT232").textContent = "City tour successfully completed.";
+                document.getElementById("LT233").textContent = "Energy -40";
+                document.getElementById("LT234").textContent = "Speed +1";
+                document.getElementById("LT235").textContent = "Not enough energy";
+                document.getElementById("LT236").textContent = "Weightlifting with go-kart successfully completed.";
+                document.getElementById("LT237").textContent = "Energy -40";
+                document.getElementById("LT238").textContent = "Strenght +1";
+                document.getElementById("LT239").textContent = "House burned down!";
+                document.getElementById("LT240").textContent = "The manager is very happy with the house you gave him as a gift!";
+                document.getElementById("LT241").textContent = "Relationship with the manager +8";
+                document.getElementById("LT242").textContent = "Your teammate is happy with the soccer cleats you gave him as a gift!";
+                document.getElementById("LT243").textContent = "Relationship with the teammates +2";
+                document.getElementById("LT244").textContent = "The manager is happy with the car you gave him as a gift!";
+                document.getElementById("LT245").textContent = "Relationship with the manager +5";
+                document.getElementById("LT246").textContent = "You earned €20 working for Uber today!";
+                document.getElementById("LT247").textContent = "Money +20";
+                document.getElementById("LT248").textContent = "Energy -10";
+                document.getElementById("LT249").textContent = "You earned €20 working for Uber today! Some of your customers were your fans!";
+                document.getElementById("LT250").textContent = "Money +20";
+                document.getElementById("LT251").textContent = "Energy -10";
+                document.getElementById("LT252").textContent = "Relationship with the fans +2";
+                document.getElementById("LT253").textContent = "You did laps and improved your kart driving skills!";
+                document.getElementById("LT254").textContent = "Energy -50";
+                document.getElementById("LT255").textContent = "Kart skill +2";
+                document.getElementById("LT256").textContent = "Fuel expenses -35€";
+                document.getElementById("LT257").textContent = "You are about to invite your teammates to a karting competition.";
+                document.getElementById("LT258").textContent = "Write the amount of money you wish to bet: ";
+                document.getElementById("LT259").textContent = "Amount to be won in case of victory: ";
+                document.getElementById("LT260").textContent = "You streamed a game of Clash Royale live on YouTube. Your fans enjoyed it, but your manager thinks it might affect your concentration during the season's games.";
+                document.getElementById("LT261").textContent = "Relationship with the fans +2";
+                document.getElementById("LT262").textContent = "Relationship with the manager -2";
+                document.getElementById("LT263").textContent = "You made a post on Instagram taunting your next opponent. Your team's fans liked it, the team felt more motivated, but the coach thought your attitude was too aggressive.";
+                document.getElementById("LT264").textContent = "Relationship with the fans +2";
+                document.getElementById("LT265").textContent = "Relationship with the teammates +1";
+                document.getElementById("LT266").textContent = "Relationship with the manager -2";
+                document.getElementById("LT267").textContent = "Adjust the rental price. The price can affect the number of interested customers.";
+                document.getElementById("LT268").textContent = "Set price (per month)";
+                document.getElementById("LT269").textContent = "Your contract with the team has ended. You have two teams interested:";
+                document.getElementById("LT270").textContent = "Aston Villa contract";
+                document.getElementById("LT271").textContent = "Salary per week: 12,000€";
+                document.getElementById("LT272").textContent = "Contract duration: Until the end of next season";
+                document.getElementById("LT273").textContent = "Newcastle United contract";
+                document.getElementById("LT274").textContent = "Salary per week: 12600€";
+                document.getElementById("LT275").textContent = "Contract duration: Until the end of next season";
+                document.getElementById("LT276").textContent = "Kart skill +2";
+                document.getElementById("LT277").textContent = "Relationship with the teammates +3";
+                document.getElementById("LT278").textContent = "Fuel expenses -35€";
+                document.getElementById("LT279").textContent = "You win.";
+                document.getElementById("LT279b").textContent = "Kart skill +2";
+                document.getElementById("LT280").textContent = "Relationship with the teammates +2";
+                document.getElementById("LT281").textContent = "Fuel expenses -35€";
+                document.getElementById("LT282").textContent = "Arsenal contract";
+                document.getElementById("LT283").textContent = "Salary per week: 40000€";
+                document.getElementById("LT284").textContent = "Contract duration: 2 years";
+                document.getElementById("LT285").textContent = "Chelsea contract";
+                document.getElementById("LT286").textContent = "Salary per week: 40000€";
+                document.getElementById("LT287").textContent = "Contract duration: 2 years";
+                document.getElementById("LT288").textContent = "Liverpool contract";
+                document.getElementById("LT289").textContent = "Salary per week: 40000€";
+                document.getElementById("LT290").textContent = "Contract duration: 2 years";
+                document.getElementById("LT291").textContent = "Manchester City contract";
+                document.getElementById("LT292").textContent = "Salary per week: 40000€";
+                document.getElementById("LT293").textContent = "Contract duration: 2 years";
+                document.getElementById("LT294").textContent = "Manchester United contract";
+                document.getElementById("LT295").textContent = "Salary per week: 40000€";
+                document.getElementById("LT296").textContent = "Contract duration: 2 years";
+                document.getElementById("LT297").textContent = "Tottenham Hotspur contract";
+                document.getElementById("LT298").textContent = "Salary per week: 40000€";
+                document.getElementById("LT299").textContent = "Contract duration: 2 years";
+                document.getElementById("LT300").textContent = "Weekly expenses";
+                document.getElementById("LT301").textContent = "You ate healthy, high-quality food.";
+                document.getElementById("LT302").textContent = "Strenght +1";
+                document.getElementById("LT303").textContent = "You ate very cheap and poor quality food.";
+                document.getElementById("LT304").textContent = "Strenght -1";
+                document.getElementById("LT305").textContent = "Goals";
+                document.getElementById("LT306").textContent = "Assists";
+                document.getElementById("LT307").textContent = "Games without conceding a goal";
+                document.getElementById("LT308").textContent = "Goals";
+                document.getElementById("LT309").textContent = "Assists";
+                document.getElementById("LT310").textContent = "Games without conceding a goal";
+                document.getElementById("LT311").textContent = "Goals";
+                document.getElementById("LT312").textContent = "Assists";
+                document.getElementById("LT313").textContent = "Games without conceding a goal";
+                document.getElementById("LT314").textContent = "Goals";
+                document.getElementById("LT315").textContent = "Assists";
+                document.getElementById("LT316").textContent = "Games without conceding a goal";
+                document.getElementById("LT317").textContent = "Goals";
+                document.getElementById("LT318").textContent = "Assists";
+                document.getElementById("LT319").textContent = "Games without conceding a goal";
+                document.getElementById("LT320").textContent = "Goals";
+                document.getElementById("LT321").textContent = "Assists";
+                document.getElementById("LT322").textContent = "Games without conceding a goal";
+                document.getElementById("LT323").textContent = "Goals";
+                document.getElementById("LT324").textContent = "Assists";
+                document.getElementById("LT325").textContent = "Games without conceding a goal";
+                document.getElementById("LT326").textContent = "Goals";
+                document.getElementById("LT327").textContent = "Assists";
+                document.getElementById("LT328").textContent = "Games without conceding a goal";
+                document.getElementById("LT330").textContent = "You visited the coach and had a pleasant conversation with him.";
+                document.getElementById("LT331").textContent = "Relationship with the manager +3";
+                document.getElementById("LT332").textContent = "Energy -3";
+                document.getElementById("LT333").textContent = "You went to the restaurant with your teammates.";
+                document.getElementById("LT334").textContent = "Relationship with the teammates +3";
+                document.getElementById("LT335").textContent = "Energy -3";
+                document.getElementById("LT336").textContent = "Money -50";
+                document.getElementById("LT337").textContent = "You went for a walk in the street to give autographs to fans.";
+                document.getElementById("LT338").textContent = "Relationship with the fans +3";
+                document.getElementById("LT339").textContent = "Energy -4";
+                document.getElementById("LT340").textContent = "Score a goal - 1PP";
+                document.getElementById("LT341").textContent = "Give a assist - 1PP";
+                document.getElementById("LT342").textContent = "Finish a game without conceding a goal - 1PP";
+                document.getElementById("LT343").textContent = "Score 5 goals - 3PP";
+                document.getElementById("LT344").textContent = "Give 5 assists - 3PP";
+                document.getElementById("LT345").textContent = "Finish 3 games without conceding a goal - 3PP";
+                document.getElementById("LT346").textContent = "Score 25 goals - 5PP";
+                document.getElementById("LT347").textContent = "Give 25 assists - 5PP";
+                document.getElementById("LT348").textContent = "Finish 10 games without conceding a goal - 5PP";
+                document.getElementById("LT349").textContent = "Spend your PlayerPoints:";
+                document.getElementById("LT350").textContent = "Reduce the energy required for shoot training: 1PP";
+                document.getElementById("LT351").textContent = "Choose a topic to discuss in the interview:";
+                document.getElementById("LT352").textContent = "Your manager is offering you a salary of €1000/month. You can accept or try to negotiate. Be careful with your decisions, as this could affect your relationship with the manager.";
+                document.getElementById("LT353").textContent = "CLICK TO START";
+                document.getElementById("LT354").textContent = "Back";
+                document.getElementById("LT355").textContent = "You don't own any soccer cleats. Buy some at the store so you can play!"
+                document.getElementById("LT356").textContent = "Agigas Fredetor Elait";
+                document.getElementById("LT357").textContent = "Agigas Fredetor Elait";
+                document.getElementById("LT358").textContent = "Animals";
+                document.getElementById("LT359").textContent = "Chihuahua";
+                document.getElementById("LT360").textContent = "Pit Bull";
+                document.getElementById("LT361").textContent = "Chihuahua";
+                document.getElementById("LT362").textContent = "Pitbull";
+                document.getElementById("LT363").textContent = "You took your dog for a walk. People enjoyed watching.";
+                document.getElementById("LT364").textContent = "Relationship with the fans +1";
+                document.getElementById("LT365").textContent = "Energy -5";
+                document.getElementById("LT366").textContent = "Your pitbull was aggressive during the walk and tried to attack people. The police fined you €1000 for that.";
+                document.getElementById("LT367").textContent = "Relationship with the fans -2";
+                document.getElementById("LT368").textContent = "Energy -5";
+                document.getElementById("LT369").textContent = "Money -1000";
+                document.getElementById("LT370").textContent = "Wrong answer. Try studying again another day.";
+                document.getElementById("LT371").textContent = "Energy -15";
+                document.getElementById("LT372").textContent = "You have acquired offensive tactical knowledge, which will improve your vision of the game when making passes during matches.";
+                document.getElementById("LT373").textContent = "Energy -15";
+                document.getElementById("LT374").textContent = "Pass +1";
+                document.getElementById("LT375").textContent = "You have acquired defensive tactical knowledge, which will improve your defensive skills during matches.";
+                document.getElementById("LT376").textContent = "Energy -15";
+                document.getElementById("LT377").textContent = "Defense +1";
+                document.getElementById("LT378").textContent = "Not enough energy";
+                document.getElementById("LT379").textContent = "Not enough energy";
+                document.getElementById("LT380").textContent = "The manager wants to have dinner with you at the restaurant and exchange some ideas. The price will be €30.";
+                document.getElementById("LT381").textContent = "The manager was saddened by this.";
+                document.getElementById("LT382").textContent = "Relationship with the manager -5";
+                document.getElementById("LT383").textContent = "The manager is pleased with your presence.";
+                document.getElementById("LT384").textContent = "Relationship with the manager +2";
+                document.getElementById("LT385").textContent = "Money -30";
+                document.getElementById("LT386").textContent = "You have now completed all the offensive tactics studies.";
+                document.getElementById("LT387").textContent = "You have now completed all the defensive tactics studies.";
+
+                document.getElementById("H2T1").textContent = "End of season"
+                document.getElementById("H2T2").textContent = "Wolverhampton contract"
+                document.getElementById("H2T3").textContent = "West Ham United contract"
+                document.getElementById("H2T4").textContent = "General"
+                document.getElementById("H2T5").textContent = "24/25 season"
+                document.getElementById("H2T6").textContent = "25/26 season"
+                document.getElementById("H2T7").textContent = "26/27 season"
+                document.getElementById("H2T8").textContent = "27/28 season"
+                document.getElementById("H2T9").textContent = "28/29 season"
+                document.getElementById("H2T10").textContent = "29/30 season"
+                document.getElementById("H2T11").textContent = "30/31 season"
+                document.getElementById("H2T12").textContent = "Objectives:"
+
+                document.getElementById("H1T1").textContent = "YOU CAN VIEW YOUR STATISTICS BY CLICKING THE STATISTICS BUTTON"
+                document.getElementById("H1T2").textContent = "É RECOMENDADO SEMPRE TREINAR SUAS HABILIDADES QUANDO TIVER 90% DE ENERGIA OU MAIS FALTANDO MAIS DE UM DIA PARA O PRÓXIMO JOGO"
+                document.getElementById("H1T3").textContent = "DICA: SE VOCÊ COMPRAR UMA CASA, NÃO VAI MAIS PRECISAR PAGAR ALUGUEL DE APARTAMENTO!"
+
+                document.getElementById("BT1").textContent = "Career mode"
+                document.getElementById("BT2").textContent = "Championships"
+                document.getElementById("BT3").textContent = "New career"
+                document.getElementById("BT4").textContent = "Carregar carreira"
+                document.getElementById("BT5").textContent = "Atacante"
+                document.getElementById("BT6").textContent = "Meio campo"
+                document.getElementById("BT7").textContent = "Zagueiro"
+                document.getElementById("BT8").textContent = "Treinar defesa"
+                document.getElementById("BT9").textContent = "Treinar passe"
+                document.getElementById("BT10").textContent = "Treinar finalização"
+                document.getElementById("BT11").textContent = "Aceitar"
+                document.getElementById("BT12").textContent = "Pedir 1150"
+                document.getElementById("BT13").textContent = "Espero vencer a EFL Championship."
+                document.getElementById("BT14").textContent = "Espero ajudar o time a subir para a Premier League."
+                document.getElementById("BT15").textContent = "Espero dar alegria aos torcedores."
+                document.getElementById("BT16").textContent = "Espero mostrar que mereço estar na Premier League."
+                document.getElementById("BT17").textContent = "Passe curto para companheiro do lado"
+                document.getElementById("BT18").textContent = "Lançamento forte para atacante"
+                document.getElementById("BT19").textContent = "Avançar driblando e passar"
+                document.getElementById("BT20").textContent = "Pressionar"
+                document.getElementById("BT21").textContent = "Recuar e fechar espaços"
+                document.getElementById("BT22").textContent = "Dar carrinho"
+                document.getElementById("BT23").textContent = "Bloquear chute"
+                document.getElementById("BT24").textContent = "Dividida em pé"
+                document.getElementById("BT25").textContent = "Relação com a torcida +1"
+                document.getElementById("BT26").textContent = "Relação com o treinador +1"
+                document.getElementById("BT27").textContent = "Relação com os companheiros +1"
+                document.getElementById("BT28").textContent = "Dar autógrafo ao torcedor"
+                document.getElementById("BT29").textContent = "Dar autógrafo a todos"
+                document.getElementById("BT30").textContent = "Jogar futebol com eles"
+                document.getElementById("BT31").textContent = "Ignorar"
+                document.getElementById("BT32").textContent = "Ver novo contrato"
+                document.getElementById("BT33").textContent = "Ver outras ofertas"
+                document.getElementById("BT34").textContent = "Ir para o Wolverhampton"
+                document.getElementById("BT35").textContent = "Ir para o West Ham United"
+                document.getElementById("BT36").textContent = "Continuar para temporada 26/27"
+                document.getElementById("BT37").textContent = "Ir para o Arsenal"
+                document.getElementById("BT38").textContent = "Ir para o Chelsea"
+                document.getElementById("BT39").textContent = "Ir para o Liverpool"
+                document.getElementById("BT40").textContent = "Ir para o Manchester City"
+                document.getElementById("BT41").textContent = "Ir para o Manchester United"
+                document.getElementById("BT42").textContent = "Ir para o Tottenham"
+                document.getElementById("BT43").textContent = "Aceitar"
+                document.getElementById("BT44").textContent = "Ver outra oferta"
+                document.getElementById("BT45").textContent = "Aceitar"
+                document.getElementById("BT46").textContent = "Ver outra oferta"
+                document.getElementById("BT47").textContent = "Chuteiras"
+                document.getElementById("BT48").textContent = "Veículos"
+                document.getElementById("BT49").textContent = "Casas"
+                document.getElementById("BT50").textContent = "Dispositivos eletrônicos"
+                document.getElementById("BT51").textContent = "Voltar"
+                document.getElementById("BT52").textContent = "Comprar"
+                document.getElementById("BT53").textContent = "Voltar"
+                document.getElementById("BT54").textContent = "Comprar"
+                document.getElementById("BT55").textContent = "Comprar"
+                document.getElementById("BT56").textContent = "Comprar"
+                document.getElementById("BT57").textContent = "Comprar"
+                document.getElementById("BT58").textContent = "Voltar"
+                document.getElementById("BT59").textContent = "Comprar"
+                document.getElementById("BT60").textContent = "Comprar"
+                document.getElementById("BT61").textContent = "Voltar"
+                document.getElementById("BT62").textContent = "Comprar"
+                document.getElementById("BT63").textContent = "Comprar"
+                document.getElementById("BT64").textContent = "Comprar"
+                document.getElementById("BT65").textContent = "Vender"
+                document.getElementById("BT66").textContent = "Dar para companheiro"
+                document.getElementById("BT67").textContent = "Dar volta de 40Km na cidade"
+                document.getElementById("BT68").textContent = "Vender"
+                document.getElementById("BT69").textContent = "Vender"
+                document.getElementById("BT70").textContent = "Dar para treinador"
+                document.getElementById("BT71").textContent = "Trabalhar de Uber"
+                document.getElementById("BT72").textContent = "Vender"
+                document.getElementById("BT73").textContent = "Levantamento de peso com kart"
+                document.getElementById("BT74").textContent = "Ir treinar no circuito"
+                document.getElementById("BT75").textContent = "Competir contra companheiros"
+                document.getElementById("BT76").textContent = "Vender"
+                document.getElementById("BT77").textContent = "Vender"
+                document.getElementById("BT78").textContent = "Queimar casa"
+                document.getElementById("BT79").textContent = "Dar casa para treinador"
+                document.getElementById("BT80").textContent = "Alugar"
+                document.getElementById("BT81").textContent = "Vender"
+                document.getElementById("BT81b").textContent = "Vender"
+                document.getElementById("BT82").textContent = "Fazer live de Clash Royale"
+                document.getElementById("BT83").textContent = "Provocar rival por Instagram"
+                document.getElementById("BT84").textContent = "Vender"
+                document.getElementById("BT85").textContent = "Fazer live de Clash Royale"
+                document.getElementById("BT86").textContent = "Provocar rival por Instagram"
+                document.getElementById("BT87").textContent = "Vender"
+                document.getElementById("BT88").textContent = "Voltar"
+                document.getElementById("BT89").textContent = "Confirmar"
+                document.getElementById("BT90").textContent = "Voltar"
+                document.getElementById("BT91").textContent = "Aceitar"
+                document.getElementById("BT92").textContent = "Rejeitar"
+                document.getElementById("BT93").textContent = "Remover oferta de aluguel"
+                document.getElementById("BT94").textContent = "Aceitar"
+                document.getElementById("BT95").textContent = "Ver outra oferta"
+                document.getElementById("BT96").textContent = "Aceitar"
+                document.getElementById("BT97").textContent = "Ver outra oferta"
+                document.getElementById("BT98").textContent = "Aceitar"
+                document.getElementById("BT99").textContent = "Ver outra oferta"
+                document.getElementById("BT100").textContent = "Aceitar"
+                document.getElementById("BT101").textContent = "Ver outra oferta"
+                document.getElementById("BT102").textContent = "Aceitar"
+                document.getElementById("BT103").textContent = "Ver outra oferta"
+                document.getElementById("BT104").textContent = "Aceitar"
+                document.getElementById("BT105").textContent = "Ver outra oferta"
+                document.getElementById("BT106").textContent = "Aceitar"
+                document.getElementById("BT107").textContent = "Ver outra oferta"
+                document.getElementById("BT108").textContent = "Aceitar"
+                document.getElementById("BT109").textContent = "Ver outra oferta"
+                document.getElementById("BT110").textContent = "Voltar"
+                document.getElementById("BT111").textContent = "Visitar treinador"
+                document.getElementById("BT112").textContent = "Ir ao restaurante com companheiros"
+                document.getElementById("BT113").textContent = "Dar autógrafos aos fãs pela cidade"
+                document.getElementById("BT114").textContent = "Voltar"
+                document.getElementById("BT115").textContent = "Reduzir energia necessária para treinar chute: 2PP"
+                document.getElementById("BT116").textContent = "Próximo jogo"
+                document.getElementById("BT117").textContent = "Jogo anterior"
+                document.getElementById("BT118").textContent = "Treinador"
+                document.getElementById("BT119").textContent = "Temporada atual"
+                document.getElementById("BT120").textContent = "O time deve ganhar o próximo jogo."
+                document.getElementById("BT121").textContent = "O próximo jogo deve ser difícil."
+                document.getElementById("BT122").textContent = "O próximo jogo é importante."
+                document.getElementById("BT123").textContent = "O time jogou bem no último jogo."
+                document.getElementById("BT124").textContent = "O time teve sorte no último jogo."
+                document.getElementById("BT125").textContent = "O time precisa melhorar para vencer."
+                document.getElementById("BT126").textContent = "O time teve falta de sorte no último jogo."
+                document.getElementById("BT127").textContent = "O time jogou bem, mas no futebol os resultados podem ser injustos."
+                document.getElementById("BT128").textContent = "O empate foi um bom resultado para a equipe."
+                document.getElementById("BT129").textContent = "O time precisa melhorar para vencer."
+                document.getElementById("BT130").textContent = "O treinador é muito talentoso."
+                document.getElementById("BT131").textContent = "O treinador tem que melhorar seu trabalho se ele quiser que o time vá bem."
+                document.getElementById("BT132").textContent = "O treinador está fazendo um péssimo trabalho no time."
+                document.getElementById("BT133").textContent = "A temporada da equipe está sendo boa."
+                document.getElementById("BT134").textContent = "A temporada da equipe está sendo ruim, a equipe tem que contratar jogadores melhores."
+                document.getElementById("BT135").textContent = "Voltar"
+                document.getElementById("BT136").textContent = "Voltar"
+                document.getElementById("BT137").textContent = "Voltar"
+                document.getElementById("BT138").textContent = "Vender"
+                document.getElementById("BT139").textContent = "Dar para companheiro"
+                document.getElementById("BT140").textContent = "Voltar"
+                document.getElementById("BT141").textContent = "Comprar"
+                document.getElementById("BT142").textContent = "Comprar"
+                document.getElementById("BT143").textContent = "Passear com o cachorro"
+                document.getElementById("BT144").textContent = "Passear com o cachorro"
+                document.getElementById("BT145").textContent = "Ok"
+                document.getElementById("BT146").textContent = "Ok"
+                document.getElementById("BT147").textContent = "Animais"
+                document.getElementById("BT148").textContent = "Ok"
+                document.getElementById("BT149").textContent = "Ok"
+                document.getElementById("BT150").textContent = "Ok"
+                document.getElementById("BT151").textContent = "Ok"
+                document.getElementById("BT152").textContent = "Ok"
+                document.getElementById("BT153").textContent = "Ir jantar com ele"
+                document.getElementById("BT154").textContent = "Não ir"
+                document.getElementById("BT155").textContent = "Estudar táticas de ataque"
+                document.getElementById("BT156").textContent = "Estudar táticas de defesa"
+                document.getElementById("BT157").textContent = "Ok"
+                document.getElementById("BT158").textContent = "Ok"
+
+                document.getElementById("alturaVelocidadeLabel").textContent = "speed:"
+                document.getElementById("alturaForcaLabel").textContent = "strenght:"
+
+                document.getElementById("BO1").textContent = "Claim reward"
+                document.getElementById("BO2").textContent = "Claim reward"
+                document.getElementById("BO3").textContent = "Claim reward"
+                document.getElementById("BO4").textContent = "Claim reward"
+                document.getElementById("BO5").textContent = "Claim reward"
+                document.getElementById("BO6").textContent = "Claim reward"
+                document.getElementById("BO7").textContent = "Claim reward"
+                document.getElementById("BO8").textContent = "Claim reward"
+                document.getElementById("BO9").textContent = "Claim reward"
+
+                document.getElementById("BMT1").textContent = "ADVANCE";
+                document.getElementById("BMT2").textContent = "HABILITIES";
+                document.getElementById("BMT3").textContent = "BUY";
+                document.getElementById("BMT4").textContent = "LIFE";
+                document.getElementById("BMT5").textContent = "RELATIONSHIPS";
+                document.getElementById("BMT6").textContent = "INTERVIEW";
+                document.getElementById("BMT7").textContent = "STATISTICS";
+                document.getElementById("BMT8").textContent = "PLAYER POINTS";
+                document.getElementById("BMT9").textContent = "SAVE GAME";
+                document.getElementById("BMT10").textContent = "LOAD GAME";
+                document.getElementById("BMT11").textContent = "CHANGE LANGUAGE";
+                document.getElementById("BMT12").textContent = "PRIVACY POLICY";
+
+                document.getElementById("L39").textContent = "ENGLISH";
 
             }
 

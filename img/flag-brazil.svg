@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" role="img" aria-label="Brazil flag">
+  <rect width="300" height="200" fill="#159447"/>
+  <path d="M150 20 282 100 150 180 18 100Z" fill="#f7d116"/>
+  <circle cx="150" cy="100" r="46" fill="#1f4aa8"/>
+  <path d="M104 92c34-11 70-6 98 16" fill="none" stroke="#fff" stroke-width="9"/>
+  <g fill="#fff">
+    <circle cx="132" cy="75" r="2.5"/>
+    <circle cx="164" cy="82" r="2.5"/>
+    <circle cx="181" cy="101" r="2.2"/>
+    <circle cx="142" cy="119" r="2.2"/>
+    <circle cx="119" cy="107" r="2"/>
+    <circle cx="157" cy="105" r="1.8"/>
+    <circle cx="173" cy="123" r="1.8"/>
+  </g>
+</svg>

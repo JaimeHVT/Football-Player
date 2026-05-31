@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="FitBand Pro">
+  <rect width="320" height="220" fill="#11151c"/>
+  <rect x="126" y="18" width="68" height="184" rx="31" fill="#242a36"/>
+  <rect x="108" y="63" width="104" height="96" rx="22" fill="#0b0f14" stroke="#f4c430" stroke-width="7"/>
+  <path d="M128 113h22l10-27 14 52 11-25h18" fill="none" stroke="#2ee59d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="160" cy="176" r="7" fill="#f4c430"/>
+</svg>

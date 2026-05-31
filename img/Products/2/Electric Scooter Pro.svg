@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Electric Scooter Pro">
+  <rect width="320" height="220" fill="#17212b"/>
+  <circle cx="88" cy="172" r="29" fill="#0d1117" stroke="#f4c430" stroke-width="10"/>
+  <circle cx="238" cy="172" r="29" fill="#0d1117" stroke="#f4c430" stroke-width="10"/>
+  <path d="M91 166h119c14 0 26-8 31-21l12-32" fill="none" stroke="#e9f1f7" stroke-width="12" stroke-linecap="round"/>
+  <path d="M253 113 226 41h-35" fill="none" stroke="#23b5d3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M183 41h52" stroke="#f4c430" stroke-width="9" stroke-linecap="round"/>
+  <rect x="125" y="142" width="82" height="15" rx="7" fill="#23b5d3"/>
+  <path d="M60 112c15-12 31-18 48-19" stroke="#f4c430" stroke-width="7" stroke-linecap="round"/>
+</svg>

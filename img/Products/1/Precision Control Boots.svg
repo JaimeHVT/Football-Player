@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Precision Control Boots">
+  <rect width="320" height="220" fill="#101820"/>
+  <path d="M45 139c37 13 77 18 119 14l65-6c28-3 46 5 55 23 4 8-1 17-10 18l-178 15c-39 3-65-14-77-49l-8-25c-3-9 8-16 16-10 6 5 12 11 18 20Z" fill="#e9f1f7"/>
+  <path d="M82 67c36 32 61 52 75 62 14 10 34 16 61 18l-17 34c-53-3-100-19-142-48-5-25 3-47 23-66Z" fill="#23b5d3"/>
+  <path d="M92 83c17 14 35 27 55 39" fill="none" stroke="#101820" stroke-width="8" stroke-linecap="round"/>
+  <path d="M97 182 87 207M127 180l-10 25M158 177l-8 24M190 173l-7 23" stroke="#f4c430" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="238" cy="74" r="31" fill="#f4c430"/>
+  <path d="m224 73 10 10 21-23" fill="none" stroke="#101820" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

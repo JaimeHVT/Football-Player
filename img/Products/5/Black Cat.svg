@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Black Cat">
+  <rect width="320" height="220" fill="#15202b"/>
+  <path d="M99 83 75 38l51 25c21-11 48-11 69 0l51-25-24 45c11 14 17 31 17 51 0 48-35 75-79 75s-79-27-79-75c0-20 7-37 18-51Z" fill="#161616"/>
+  <ellipse cx="130" cy="126" rx="13" ry="16" fill="#f4c430"/>
+  <ellipse cx="190" cy="126" rx="13" ry="16" fill="#f4c430"/>
+  <path d="M153 151h14l-7 8Z" fill="#f08cae"/>
+  <path d="M160 159c-8 10-19 13-31 8M160 159c8 10 19 13 31 8" fill="none" stroke="#f7f7f7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M96 150H41M99 162H45M224 150h55M221 162h54" stroke="#f7f7f7" stroke-width="4" stroke-linecap="round"/>
+</svg>
